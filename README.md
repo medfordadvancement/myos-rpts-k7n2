@@ -1,2 +1,1 @@
-# myos-rpts-k7n2
-MyOS delivery report pages
+MyOS delivery report pages. Overwrite in place. Same tap-links each week.
