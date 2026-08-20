@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vanguard Flooring - Weekly Review 8/20</title>
+<style>
+  :root{
+    --bg:#f5f7f9; --surface:#ffffff; --surface-2:#eef1f5; --line:#e2e7ee;
+    --ink:#182130; --muted:#5c6878; --faint:#8a94a6;
+    --accent:#1f5673; --accent-ink:#276b8f; --accent-soft:#e7eef3;
+    --ok:#0f9a76; --ok-soft:#e2f3ee; --warn:#c1810f; --warn-soft:#f7eed9;
+    --crit:#d64550; --crit-soft:#f8e4e5; --idle:#7c879b;
+    --shadow:0 1px 2px rgba(24,33,48,.06),0 4px 14px rgba(24,33,48,.05);
+    --mono:ui-monospace,Consolas,"SF Mono",Menlo,monospace;
+    --sans:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#0f141a; --surface:#171d25; --surface-2:#1e2630; --line:#2a323d;
+    --ink:#e9edf3; --muted:#93a0b0; --faint:#6c7889;
+    --accent:#63aacf; --accent-ink:#7cbbdb; --accent-soft:#1b2b36;
+    --ok:#3bbd97; --ok-soft:#13312a; --warn:#e0a53a; --warn-soft:#332a15;
+    --crit:#e8636d; --crit-soft:#3a1f22; --idle:#8894a6;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.28);
+  }}
+  *{box-sizing:border-box;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);margin:0;
+    padding:26px clamp(16px,4vw,34px) 46px;line-height:1.55;max-width:900px;}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums;}
+  .top{border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:20px;}
+  .mark{font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--muted);}
+  .mark b{color:var(--accent);}
+  h1{font-size:24px;margin:4px 0 2px;letter-spacing:-.02em;}
+  .sub{font-size:13px;color:var(--muted);} .sub b{color:var(--ink);}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);
+     margin:26px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--accent);}
+  p{margin:6px 0;} ul{margin:6px 0;padding-left:20px;} li{margin:5px 0;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:6px 0 4px;}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);}
+  .stat .n{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1;}
+  .stat .n.ok{color:var(--ok);} .stat .n.ac{color:var(--accent);} .stat .n.warn{color:var(--warn);}
+  .stat .l{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:7px;}
+  .muted{color:var(--muted);font-size:13px;}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;background:var(--accent-soft);
+    color:var(--accent-ink);border-radius:5px;padding:1px 6px;margin-left:4px;}
+  .pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-family:var(--mono);
+    padding:1px 7px;border-radius:20px;background:var(--ok-soft);color:var(--ok);
+    border:1px solid color-mix(in srgb,var(--ok) 30%,transparent);}
+  .flag{background:var(--warn-soft);border:1px solid #ecd9a8;border-radius:10px;padding:13px 15px;margin:10px 0;}
+  .flag b{color:var(--warn);}
+  .decision{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:8px;padding:12px 15px;margin:10px 0;box-shadow:var(--shadow);}
+  .decision .q{font-weight:650;margin:0 0 4px;}
+  .decision .ctx{font-size:13px;color:var(--muted);margin:4px 0;}
+  .decision .ask{font-size:13px;margin:6px 0 0;} .decision .ask b{color:var(--accent-ink);}
+  .agenda{counter-reset:s;list-style:none;padding-left:0;}
+  .agenda li{counter-increment:s;padding-left:31px;position:relative;margin:8px 0;}
+  .agenda li::before{content:counter(s);position:absolute;left:0;top:1px;background:var(--accent);color:#fff;
+    width:21px;height:21px;border-radius:50%;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  footer{margin-top:28px;padding-top:12px;border-top:1px solid var(--line);font-size:11.5px;color:var(--faint);}
+  @media print{body{padding:0;font-size:12px;max-width:none;} .decision,.stat{break-inside:avoid;} h2{margin-top:16px;}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="mark">My<b>OS</b> &nbsp;&middot;&nbsp; Scrum master weekly review</div>
+  <h1>Vanguard Flooring</h1>
+  <div class="sub"><b>Week ending 8/20</b> &middot; prepared 2026-08-20 &middot; source: vanguard-flooring repo</div>
+</div>
+<h2>Where the build stands</h2>
+<div class="stats">
+  <div class="stat"><div class="n">12 / 12</div><div class="l">Capability areas built</div></div>
+  <div class="stat"><div class="n ok">Green</div><div class="l">All checks passing</div></div>
+  <div class="stat"><div class="n ac">1</div><div class="l">Open PR (docs only)</div></div>
+  <div class="stat"><div class="n ac">32</div><div class="l">Client decisions open</div></div>
+</div>
+<p class="muted">Still a review environment, no production launch. The review queue from last week (12 finished PRs waiting) has cleared.</p>
+<h2>Shipped since last review (8/14)</h2>
+<ul>
+  <li><b>Purchasing:</b> vendor master, alias resolution, and a PO dispatch surface that prepares orders but does not send them. Landed 8/17. <span class="tag">#52</span></li>
+  <li><b>Build check:</b> the verify pipeline now runs a full next build. <span class="tag">#53</span></li>
+  <li><b>Tickets:</b> new installation-ticket line items start unselected so nothing is assumed picked. <span class="tag">#61</span><span class="tag">D24</span></li>
+  <li><b>Warehouse walkthrough:</b> findings from 8/19 written into the product record, covering receiving, inventory, and installation tickets. <span class="tag">#60</span></li>
+  <li><b>Design proposals:</b> warehouse locations and stock placement, inventory aging and warehouse reporting, product identity and clipboard. Ready for the team. <span class="tag">#62</span><span class="tag">#63</span><span class="tag">#64</span></li>
+  <li><b>Feedback-stack questions</b> landed and renumbered to OQ-69 through OQ-83 so they do not collide with existing client questions. <span class="tag">#66</span></li>
+  <li><b>Working agreement:</b> stacked changes open against the parent branch, not main. <span class="tag">#65</span></li>
+</ul>
+<h2>Watch-item</h2>
+<div class="flag">
+  <p><b>Decision debt has not moved.</b> 32 client-owned and 6 team-owned questions are still open, unchanged since late July. Last week's bottleneck (12 PRs waiting on review) is gone. The only open PR is #67 (documentation, tests green). The risk is unanswered business decisions, not code sitting in review.</p>
+</div>
+<h2>Decisions queued</h2>
+<p class="muted">Same three from the 7/31 walkthrough, still not logged as resolved. First action: confirm those outcomes and get them logged, or re-decide.</p>
+<div class="decision">
+  <p class="q">1. Which catalog items migrate? <span class="tag">OQ-29</span></p>
+  <p class="ctx">About 59,000 old items, roughly 80% never used on a bid.</p>
+  <p class="ask"><b>Ask:</b> pick the cut (used since 2024, since 2025, or used on 2 or more bids ever).</p>
+</div>
+<div class="decision">
+  <p class="q">2. Which customers migrate, and which record is authoritative? <span class="tag">OQ-31/32/33</span></p>
+  <p class="ctx">Two overlapping lists, an unreliable active flag, and a few name conflicts.</p>
+  <p class="ask"><b>Ask:</b> activity-based rule, system of record, and the correct names.</p>
+</div>
+<div class="decision">
+  <p class="q">3. How are change orders modeled? <span class="tag">OQ-36/37/38/39</span></p>
+  <p class="ctx">Line-item detail vs bucket totals, CO tax placement, whether about 3,500 drafts migrate (team says exclude), and confirming win/loss history cannot be backfilled.</p>
+</div>
+<p class="muted">Plus six workflow and permission decisions still open: material-release owner (OQ-17), PO-cancel approval (OQ-18), close-with-open-COs (OQ-19), operationally-complete owner (OQ-20), report visibility (OQ-21), edits during accounting review (OQ-22).</p>
+<h2>Suggested flow to drive the meeting</h2>
+<ol class="agenda">
+  <li>Log the 7/31 outcomes (catalog, customers, change orders) or re-decide.</li>
+  <li>Work the six workflow and permission decisions.</li>
+  <li>Glance at this week's warehouse walkthrough findings so the next build slice is pointed at a real floor process.</li>
+  <li>Confirm the next review date.</li>
+</ol>
+<footer>
+  Generated 2026-08-20 from the Vanguard Flooring repository. Question IDs match the repo tracker. No commercial or dollar figures included.
+</footer>
+</body>
+</html>
