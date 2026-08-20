@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyOS Project Portfolio</title>
+<style>
+  :root{
+    --bg:#f5f7f9; --surface:#ffffff; --surface-2:#eef1f5; --line:#e2e7ee;
+    --ink:#182130; --muted:#5c6878; --faint:#8a94a6;
+    --accent:#1f5673; --accent-ink:#276b8f; --accent-soft:#e7eef3;
+    --ok:#0f9a76; --ok-soft:#e2f3ee;
+    --warn:#c1810f; --warn-soft:#f7eed9;
+    --crit:#d64550; --crit-soft:#f8e4e5;
+    --idle:#7c879b; --idle-soft:#eceef2;
+    --shadow:0 1px 2px rgba(24,33,48,.06), 0 4px 14px rgba(24,33,48,.05);
+    --mono:ui-monospace,Consolas,"SF Mono",Menlo,monospace;
+    --sans:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0f141a; --surface:#171d25; --surface-2:#1e2630; --line:#2a323d;
+      --ink:#e9edf3; --muted:#93a0b0; --faint:#6c7889;
+      --accent:#63aacf; --accent-ink:#7cbbdb; --accent-soft:#1b2b36;
+      --ok:#3bbd97; --ok-soft:#13312a;
+      --warn:#e0a53a; --warn-soft:#332a15;
+      --crit:#e8636d; --crit-soft:#3a1f22;
+      --idle:#8894a6; --idle-soft:#232b35;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.28);
+    }
+  }
+  *{box-sizing:border-box;}
+  .mos{font-family:var(--sans); color:var(--ink); background:var(--bg);
+    margin:0; padding:22px clamp(14px,3vw,30px) 40px; min-height:100vh; line-height:1.5;}
+  .mono{font-family:var(--mono); font-variant-numeric:tabular-nums;}
+  .topbar{display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap;
+    gap:10px; border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:20px;}
+  .brand{display:flex; align-items:baseline; gap:12px;}
+  .brand .mark{font-size:21px; font-weight:700; letter-spacing:-.02em; color:var(--ink);}
+  .brand .mark b{color:var(--accent);}
+  .brand .tag{font-size:12px; text-transform:uppercase; letter-spacing:.14em; color:var(--faint);}
+  .updated{font-size:12px; color:var(--muted);}
+  .updated span{color:var(--ink);}
+  .kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:26px;}
+  .kpi{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 16px; box-shadow:var(--shadow);}
+  .kpi .n{font-size:26px; font-weight:700; letter-spacing:-.02em; line-height:1;}
+  .kpi .l{font-size:11.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); margin-top:8px;}
+  .kpi.accent .n{color:var(--accent);}
+  .board-head{display:flex; align-items:center; gap:10px; margin:0 0 12px;}
+  .board-head h2{font-size:14px; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin:0; font-weight:600;}
+  .board-head .rule{flex:1; height:1px; background:var(--line);}
+  .board{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(230px,1fr);
+    gap:14px; overflow-x:auto; padding-bottom:10px;}
+  .col{background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:12px 12px 14px; min-height:120px;}
+  .col-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; padding:0 2px;}
+  .col-head .name{font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--ink);}
+  .col-head .name::before{content:""; display:inline-block; width:7px; height:7px; border-radius:50%;
+    background:var(--accent); margin-right:7px; vertical-align:middle;}
+  .col-head .ct{font-size:12px; color:var(--faint); background:var(--surface); border:1px solid var(--line);
+    border-radius:20px; padding:1px 8px;}
+  .col-empty{font-size:12px; color:var(--faint); font-style:italic; padding:6px 4px;}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:11px;
+    padding:12px 12px 11px; box-shadow:var(--shadow); margin-bottom:10px; position:relative; overflow:hidden;}
+  .card:last-child{margin-bottom:0;}
+  .card.stripe::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--stripe);}
+  .card.stripe{padding-left:15px;}
+  .card .cn{display:flex; align-items:center; justify-content:space-between; gap:8px;}
+  .card .title{font-size:14.5px; font-weight:650; letter-spacing:-.01em;}
+  .card .sub{font-size:12px; color:var(--muted); margin-top:2px;}
+  .dot{width:9px; height:9px; border-radius:50%; flex:none; box-shadow:0 0 0 3px var(--dot-halo);}
+  .row{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; align-items:center;}
+  .chip{font-size:11px; font-family:var(--mono); border-radius:6px; padding:2px 7px; border:1px solid transparent;}
+  .chip.client{background:var(--accent-soft); color:var(--accent-ink); border-color:var(--line);}
+  .chip.team{background:var(--idle-soft); color:var(--muted);}
+  .chip.health{display:inline-flex; align-items:center; gap:5px; font-family:var(--sans);}
+  .next{font-size:12px; color:var(--muted); margin-top:9px;}
+  .next b{color:var(--ink); font-weight:600;}
+  .blocker{font-size:11.5px; margin-top:9px; padding:6px 8px; border-radius:7px; line-height:1.4;
+    background:var(--blk-soft); color:var(--ink);}
+  .blocker .lbl{font-weight:700; text-transform:uppercase; letter-spacing:.05em; font-size:10px; color:var(--blk-ink);}
+  .foot-row{display:flex; align-items:center; justify-content:space-between; margin-top:10px;}
+  .stamp{font-size:11px; color:var(--faint);}
+  .sample-tag{font-size:9.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--faint);
+    border:1px dashed var(--line); border-radius:5px; padding:1px 6px;}
+  .card.is-sample{opacity:.82;}
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin:22px 0 0; padding-top:14px; border-top:1px solid var(--line);
+    font-size:12px; color:var(--muted);}
+  .legend .item{display:inline-flex; align-items:center; gap:6px;}
+  footer{margin-top:16px; font-size:11.5px; color:var(--faint);}
+</style>
+</head>
+<body>
+<div class="mos">
+  <div class="topbar">
+    <div class="brand">
+      <div class="mark">My<b>OS</b> Portfolio</div>
+      <div class="tag">Project lifecycle and status</div>
+    </div>
+    <div class="updated">Updated <span id="u-date" class="mono">--</span></div>
+  </div>
+  <div class="kpis" id="kpis"></div>
+  <div class="board-head">
+    <h2>Lifecycle pipeline</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="board" id="board"></div>
+  <div class="legend" id="legend"></div>
+  <footer id="footer"></footer>
+</div>
+<script>
+  const STAGES = [
+    {id:"discovery", name:"Discovery"},
+    {id:"design",    name:"Design and Architecture"},
+    {id:"build",     name:"Build"},
+    {id:"migration", name:"Data Migration"},
+    {id:"uat",       name:"UAT / Review"},
+    {id:"launch",    name:"Launch"},
+    {id:"live",      name:"Live / Support"}
+  ];
+  const HEALTH = {
+    healthy:  {label:"Healthy",   color:"var(--ok)",   halo:"var(--ok-soft)"},
+    attention:{label:"Attention", color:"var(--warn)", halo:"var(--warn-soft)"},
+    critical: {label:"At risk",   color:"var(--crit)", halo:"var(--crit-soft)"},
+    idle:     {label:"Idle",      color:"var(--idle)", halo:"var(--idle-soft)"}
+  };
+  const LEVEL = {
+    attention:{soft:"var(--warn-soft)", ink:"var(--warn)", stripe:"var(--warn)"},
+    critical: {soft:"var(--crit-soft)", ink:"var(--crit)", stripe:"var(--crit)"}
+  };
+  const DATA = {
+    updated: "2026-08-20",
+    projects: [
+      {name:"Vanguard Flooring", subtitle:"Commercial flooring operations app", stage:"migration",
+       health:"healthy", healthNote:"CI green, review queue cleared", clientDecisions:32, teamDecisions:6,
+       nextMilestone:"Log the 7/31 catalog, customer, and change-order decisions",
+       blocker:"32 client decisions still open, unchanged since late July. The three 7/31 items are still not logged.",
+       blockerLevel:"attention", updated:"2026-08-20", sample:false},
+      {name:"Sample Client A", subtitle:"Placeholder - replace when you onboard the next project", stage:"discovery",
+       health:"idle", healthNote:"Not started", clientDecisions:0, teamDecisions:0,
+       nextMilestone:"Scope workshop", blocker:"", blockerLevel:"", updated:"2026-07-31", sample:true},
+      {name:"Sample Client B", subtitle:"Placeholder - shows a build-stage project", stage:"build",
+       health:"attention", healthNote:"Example only", clientDecisions:4, teamDecisions:2,
+       nextMilestone:"Sprint review", blocker:"Example blocker to show the severity stripe",
+       blockerLevel:"critical", updated:"2026-07-31", sample:true}
+    ]
+  };
+  const el = (t, c, h) => { const e = document.createElement(t); if(c) e.className=c; if(h!=null) e.innerHTML=h; return e; };
+  const real = DATA.projects.filter(p => !p.sample);
+  const inBuild = DATA.projects.filter(p => ["build","migration"].includes(p.stage) && !p.sample).length;
+  const nearLaunch = DATA.projects.filter(p => ["uat","launch"].includes(p.stage) && !p.sample).length;
+  const clientOpen = real.reduce((s,p)=>s+(p.clientDecisions||0),0);
+  const atRisk = real.filter(p => p.health==="critical" || p.health==="attention").length;
+  const kpis = [
+    {n: real.length, l:"Active projects"},
+    {n: inBuild, l:"In build / migration"},
+    {n: nearLaunch, l:"In review / launch"},
+    {n: clientOpen, l:"Open client decisions", accent:true},
+    {n: atRisk, l:"Needing attention"}
+  ];
+  const kwrap = document.getElementById("kpis");
+  kpis.forEach(k=>{
+    const d = el("div","kpi"+(k.accent?" accent":""));
+    d.appendChild(el("div","n mono", k.n));
+    d.appendChild(el("div","l", k.l));
+    kwrap.appendChild(d);
+  });
+  document.getElementById("u-date").textContent = DATA.updated;
+  const board = document.getElementById("board");
+  STAGES.forEach(stage=>{
+    const items = DATA.projects.filter(p=>p.stage===stage.id);
+    const col = el("div","col");
+    const head = el("div","col-head");
+    head.appendChild(el("span","name", stage.name));
+    head.appendChild(el("span","ct mono", items.length));
+    col.appendChild(head);
+    if(items.length===0){ col.appendChild(el("div","col-empty","-")); }
+    items.forEach(p=>col.appendChild(renderCard(p)));
+    board.appendChild(col);
+  });
+  function renderCard(p){
+    const lvl = LEVEL[p.blockerLevel];
+    const hasBlk = p.blocker && lvl;
+    const card = el("div","card"+(hasBlk?" stripe":"")+(p.sample?" is-sample":""));
+    if(hasBlk){ card.style.setProperty("--stripe", lvl.stripe); }
+    const h = HEALTH[p.health] || HEALTH.idle;
+    const cn = el("div","cn");
+    const left = el("div");
+    left.appendChild(el("div","title", p.name));
+    if(p.subtitle) left.appendChild(el("div","sub", p.subtitle));
+    cn.appendChild(left);
+    const dot = el("span","dot");
+    dot.style.background = h.color; dot.style.setProperty("--dot-halo", h.halo);
+    dot.title = h.label;
+    cn.appendChild(dot);
+    card.appendChild(cn);
+    const row = el("div","row");
+    const hc = el("span","chip health"); hc.style.color = h.color;
+    hc.innerHTML = '<span class="dot" style="width:7px;height:7px;box-shadow:none;background:'+h.color+'"></span>'+h.label;
+    row.appendChild(hc);
+    if(p.clientDecisions>0) row.appendChild(el("span","chip client", p.clientDecisions+" client"));
+    if(p.teamDecisions>0) row.appendChild(el("span","chip team", p.teamDecisions+" team"));
+    card.appendChild(row);
+    if(p.nextMilestone){
+      const n = el("div","next"); n.innerHTML = "Next: <b>"+p.nextMilestone+"</b>"; card.appendChild(n);
+    }
+    if(hasBlk){
+      const b = el("div","blocker");
+      b.style.setProperty("--blk-soft", lvl.soft); b.style.setProperty("--blk-ink", lvl.ink);
+      b.innerHTML = '<span class="lbl">Blocker</span> '+p.blocker;
+      card.appendChild(b);
+    }
+    const fr = el("div","foot-row");
+    fr.appendChild(el("span","stamp mono", "upd "+ (p.updated||"")));
+    if(p.sample) fr.appendChild(el("span","sample-tag","sample"));
+    card.appendChild(fr);
+    return card;
+  }
+  const legend = document.getElementById("legend");
+  Object.values(HEALTH).forEach(h=>{
+    const i = el("span","item");
+    i.innerHTML = '<span class="dot" style="width:9px;height:9px;box-shadow:none;background:'+h.color+'"></span>'+h.label;
+    legend.appendChild(i);
+  });
+  const ci = el("span","item"); ci.innerHTML = '<span class="chip client mono" style="padding:1px 6px">n client</span> open decisions the client owns';
+  legend.appendChild(ci);
+  document.getElementById("footer").innerHTML =
+    "Status snapshot, no commercial terms included. Sample cards are placeholders until real projects are added.";
+</script>
+</body>
+</html>
