@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Discover Crypto - app portfolio - refreshed 2026-08-24</title>
+<style>
+:root{
+  --bg:#f5f7f9;--surface:#ffffff;--surface-2:#eef1f5;--line:#e2e7ee;
+  --ink:#182130;--muted:#5c6878;--faint:#8a94a6;
+  --accent:#C2410C;--accent-ink:#C2410C;
+  --ok:#0f9a76;--warn:#c1810f;--crit:#d64550;--idle:#7c879b;
+  --shadow:0 1px 2px rgba(24,33,48,.06),0 4px 14px rgba(24,33,48,.05);
+  --mono:ui-monospace,Consolas,"SF Mono",Menlo,monospace;
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0f141a;--surface:#171d25;--surface-2:#1e2630;--line:#2a323d;
+  --ink:#e9edf3;--muted:#93a0b0;--faint:#6c7889;
+  --accent:#F0993D;--accent-ink:#F0993D;
+  --ok:#3bbd97;--warn:#e0a53a;--crit:#e8636d;--idle:#8894a6;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.28);
+}}
+*{box-sizing:border-box}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);margin:0;
+  padding:24px clamp(16px,4vw,40px) 56px;line-height:1.55;max-width:940px;}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+.brand{display:flex;align-items:baseline;gap:11px}
+.mark{font-size:15px;font-weight:700;letter-spacing:-.01em}.mark b{color:var(--accent)}
+h1{font-size:22px;margin:0;letter-spacing:-.02em}
+.sub{font-size:12px;text-transform:uppercase;letter-spacing:.13em;color:var(--faint);margin-top:3px}
+.upd{font-size:12px;color:var(--muted)}
+.intro{font-size:13.5px;color:var(--muted);background:var(--surface-2);border-radius:10px;
+  padding:12px 14px;margin-bottom:16px;border-left:3px solid var(--accent)}
+.asks{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  box-shadow:var(--shadow);margin-bottom:22px}
+.asks h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);
+  margin:0 0 10px;font-weight:600}
+.agenda{counter-reset:s;list-style:none;padding:0;margin:0}
+.agenda li{counter-increment:s;padding:8px 0 8px 31px;position:relative;border-bottom:1px solid var(--line);font-size:14px}
+.agenda li:last-child{border-bottom:none}
+.agenda li::before{content:counter(s);position:absolute;left:0;top:8px;background:var(--accent);color:#fff;
+  width:21px;height:21px;border-radius:50%;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:26px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow)}
+.kpi .n{font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:1;text-transform:capitalize}
+.kpi .l{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:7px}
+.kpi.t-ok .n{color:var(--ok)}.kpi.t-warn .n{color:var(--warn)}.kpi.t-crit .n{color:var(--crit)}
+.kpi.t-accent .n{color:var(--accent)}.kpi.t-idle .n{color:var(--idle)}
+.app{--appc:var(--app);position:relative;margin:0 0 34px;padding-left:16px;border-left:5px solid var(--appc);}
+.aband{background:color-mix(in srgb,var(--appc) 11%,var(--surface));
+  border:1px solid color-mix(in srgb,var(--appc) 32%,var(--line));
+  border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.aname{font-size:19px;font-weight:750;letter-spacing:-.02em;color:var(--appc)}
+.ameta{font-size:11.5px;color:var(--muted);margin-top:3px}
+.ablurb{font-size:13px;color:var(--ink);margin:8px 0 0;opacity:.88}
+.astats{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:9px;margin-bottom:13px}
+.astat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+.astat .n{font-size:17px;font-weight:700;line-height:1;text-transform:capitalize}
+.astat .l{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:5px}
+.astat.t-ok .n{color:var(--ok)}.astat.t-warn .n{color:var(--warn)}.astat.t-crit .n{color:var(--crit)}
+.astat.t-accent .n{color:var(--appc)}.astat.t-idle .n{color:var(--idle)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  box-shadow:var(--shadow);margin-bottom:11px}
+.card h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);
+  margin:0 0 4px;font-weight:600}
+.card h2 .rule{color:var(--faint);font-weight:400;letter-spacing:.04em;text-transform:none}
+.explain{font-size:12.5px;color:var(--faint);margin:0 0 11px;line-height:1.5;font-style:italic}
+ul.lines{margin:0;padding:0;list-style:none}
+ul.lines li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+ul.lines li:last-child{border-bottom:none}
+.empty{font-size:13px;color:var(--faint);font-style:italic}
+.chg{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;padding:7px 0;border-bottom:1px solid var(--line)}
+.chg:last-child{border-bottom:none}
+.tag{flex:none;font-size:10.5px;font-weight:600;letter-spacing:.03em;padding:2px 8px;border-radius:5px;
+  background:color-mix(in srgb,var(--bc) 14%,transparent);color:var(--bc);
+  border:1px solid color-mix(in srgb,var(--bc) 32%,transparent);white-space:nowrap}
+.scope{flex:none;font-size:11px;color:var(--faint);background:var(--surface-2);padding:1px 6px;border-radius:4px}
+.chg-txt{font-size:13.5px;min-width:0}
+.pr{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  padding:9px 0;border-bottom:1px solid var(--line)}
+.pr:last-child{border-bottom:none}
+.pr-main{display:flex;align-items:baseline;gap:9px;min-width:0}
+.pr-num{color:var(--accent-ink);font-weight:600;font-size:13px;flex:none;text-decoration:none}
+.pr-title{font-size:14px}
+.pr-meta{display:flex;align-items:center;gap:8px;flex:none;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;padding:2px 9px;border-radius:20px;
+  background:color-mix(in srgb, var(--bc) 12%, transparent);color:var(--bc);border:1px solid color-mix(in srgb,var(--bc) 30%,transparent)}
+.note{font-size:13.5px;color:var(--muted);background:var(--surface-2);border-radius:9px;padding:11px 13px}
+footer{font-size:11.5px;color:var(--faint);margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
+a{color:inherit}
+@media (max-width:560px){ .app{padding-left:11px;border-left-width:4px} }
+</style>
+</head>
+<body>
+<div class="top">
+  <div>
+    <div class="brand"><span class="mark">Discover <b>Crypto</b></span></div>
+    <h1>Discover Crypto - app portfolio</h1>
+    <div class="sub">Weekly packet - refreshed 2026-08-24</div>
+  </div>
+  <div class="upd">2026-08-24 13:55 ET</div>
+</div>
+
+<div class="intro">Plain-English read on the two Discover Crypto apps. Friday 8/21 packet plus what shipped over the weekend. "Shipped" means finished and live. "Waiting on review" means done but not approved yet. "Flags" are things worth a look, not errors. Read-only. Source of truth is the HIT-Network org repos, not the local clones.</div>
+
+<div class="asks">
+  <h2>What to do this week</h2>
+  <ol class="agenda">
+    <li><b>HIT Central is stuck, except for one new PR today.</b> <a href="https://github.com/HIT-Network/hit-central/pull/5">#5</a> has sat 60 days as a draft. <a href="https://github.com/HIT-Network/hit-central/pull/40">#40</a> has sat 20 days. Ask Eron: close them, or review them.</li>
+    <li><b>DC News is still on a fallback.</b> <a href="https://github.com/HIT-Network/dc-data-hub/pull/25">#25</a> retires the dead Railway X-feed adapter. That is the TJ nudge from the goals file. One review unblocks it.</li>
+    <li><b>Stop chasing the old watchdog pile.</b> The 8/21 packet listed 12 "member access degraded" issues. Sunday's <a href="https://github.com/HIT-Network/dc-data-hub/pull/33">#33</a> made that one-issue-per-alarm. HIT-Network now has one real leftover: Morning Pulse from July 24 (<a href="https://github.com/HIT-Network/dc-data-hub/issues/1">#1</a>).</li>
+  </ol>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="n mono">5</div><div class="l">Shipped since Friday</div></div>
+  <div class="kpi"><div class="n mono">4</div><div class="l">Awaiting review</div></div>
+  <div class="kpi t-idle"><div class="n mono">none</div><div class="l">Automated checks on open PRs</div></div>
+  <div class="kpi t-accent"><div class="n mono">17</div><div class="l">Goals open</div></div>
+  <div class="kpi t-warn"><div class="n mono">5</div><div class="l">Flags to look at</div></div>
+</div>
+
+<div class="app" style="--app:#3B82C4">
+  <header class="aband">
+    <div class="aname">HIT Central</div>
+    <div class="ameta mono">HIT-Network/hit-central  -  last activity today</div>
+    <p class="ablurb">Internal workspace for creator tools (thumbnails, long-form, boards, deals, time tracking) at app.hitnetwork.ai.</p>
+  </header>
+  <div class="astats">
+    <div class="astat"><div class="n mono">0</div><div class="l">Shipped this week</div></div>
+    <div class="astat"><div class="n mono">3</div><div class="l">Awaiting review</div></div>
+    <div class="astat t-accent"><div class="n mono">6</div><div class="l">Goals open</div></div>
+    <div class="astat t-warn"><div class="n mono">3</div><div class="l">Flags</div></div>
+    <div class="astat t-ok"><div class="n mono">today</div><div class="l">Last activity</div></div>
+  </div>
+  <div class="asections">
+    <section class="card"><h2>In plain English</h2>
+      <div class="note">Nothing merged in 3 weeks. Today a new PR showed up: a real-data path for Lead Engine that stays off until someone turns the keys on. The two old PRs are still sitting.</div>
+    </section>
+    <section class="card"><h2>What shipped this week <span class="rule">0 changes</span></h2>
+      <p class="explain">Work that is finished and already live in the app.</p>
+      <div class="empty">Nothing went live in the last 10 days</div>
+    </section>
+    <section class="card"><h2>Waiting on review</h2>
+      <p class="explain">Finished work waiting on a teammate. Anything here more than a few days is stuck.</p>
+      <div class="pr"><div class="pr-main"><a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/41">#41</a><span class="pr-title">Lead Engine real-data go-live path (keys-gated, off until enabled)</span></div><div class="pr-meta"><span class="badge" style="--bc:var(--idle)">checks: none</span><span class="badge" style="--bc:var(--ok)">opened today</span></div></div>
+      <div class="pr"><div class="pr-main"><a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/40">#40</a><span class="pr-title">Six findings from the tracker-feed QA pass</span></div><div class="pr-meta"><span class="badge" style="--bc:var(--idle)">checks: none</span><span class="badge" style="--bc:var(--crit)">20d open</span></div></div>
+      <div class="pr"><div class="pr-main"><a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/5">#5</a><span class="pr-title">Dashboard ops layer (still a draft)</span></div><div class="pr-meta"><span class="badge" style="--bc:var(--idle)">draft</span><span class="badge" style="--bc:var(--crit)">60d open</span></div></div>
+    </section>
+    <section class="card"><h2>Goals in flight <span class="rule">0 done / 6 open</span></h2>
+      <p class="explain">Hand-maintained review list, not a backlog.</p>
+      <ul class="lines">
+        <li>Add a test job to CI so vitest and pytest actually gate a PR</li>
+        <li>Protect main (no required review or checks today)</li>
+        <li>Prune merged feature branches</li>
+        <li>Close or rebase PR #5</li>
+        <li>Finish the Tracker hook registration on Eron's machine</li>
+        <li>Confirm whether Thumbnail Studio and Longform Editor are live or still stubs</li>
+      </ul>
+    </section>
+    <section class="card"><h2>Worth a look</h2>
+      <p class="explain">Things that could bite later.</p>
+      <ul class="lines">
+        <li>#40 has waited 20 days. #5 has waited 60 days as a draft. Neither has checks.</li>
+        <li>No tests gate PRs. Main is unprotected. Same structural gap as Data Hub.</li>
+        <li>Today's #41 is the first new work since early August. Confirm Lead Engine is actually next, not drive-by.</li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<div class="app" style="--app:#E17A16">
+  <header class="aband">
+    <div class="aname">DC Data Hub</div>
+    <div class="ameta mono">HIT-Network/dc-data-hub  -  last activity yesterday</div>
+    <p class="ablurb">Members-only crypto dashboard for paying subscribers at app.discovercrypto.live.</p>
+  </header>
+  <div class="astats">
+    <div class="astat t-ok"><div class="n mono">5</div><div class="l">Shipped since Friday</div></div>
+    <div class="astat"><div class="n mono">1</div><div class="l">Awaiting review</div></div>
+    <div class="astat t-accent"><div class="n mono">11</div><div class="l">Goals open</div></div>
+    <div class="astat t-warn"><div class="n mono">2</div><div class="l">Flags</div></div>
+    <div class="astat t-ok"><div class="n mono">Sun</div><div class="l">Last activity</div></div>
+  </div>
+  <div class="asections">
+    <section class="card"><h2>In plain English</h2>
+      <div class="note">Busy weekend. The team fixed false alarms on signals, gave the ingest alarm a real listener, and stopped the watchdog from opening a new issue every day. Friday's "12 degraded-access issues" is no longer the picture. News is still waiting on the dead X-feed adapter.</div>
+    </section>
+    <section class="card"><h2>What shipped since Friday <span class="rule">5 changes</span></h2>
+      <p class="explain">Finished and already live.</p>
+      <div class="chg"><span class="tag" style="--bc:var(--ok)">Bug fix</span><span class="scope mono">watchdogs</span><span class="chg-txt">One open issue per alarm, and say "all clear" when it clears <a class="pr-num mono" href="https://github.com/HIT-Network/dc-data-hub/pull/33">#33</a></span></div>
+      <div class="chg"><span class="tag" style="--bc:var(--ok)">Bug fix</span><span class="scope mono">signals</span><span class="chg-txt">Staleness window is 72 hours, so Saturday no longer looks like an outage <a class="pr-num mono" href="https://github.com/HIT-Network/dc-data-hub/pull/32">#32</a></span></div>
+      <div class="chg"><span class="tag" style="--bc:var(--ok)">Bug fix</span><span class="scope mono">signals</span><span class="chg-txt">The staleness alert no longer fires on a healthy worker the first time out <a class="pr-num mono" href="https://github.com/HIT-Network/dc-data-hub/pull/31">#31</a></span></div>
+      <div class="chg"><span class="tag" style="--bc:var(--accent)">New feature</span><span class="scope mono">signals</span><span class="chg-txt">The ingest alarm now has something that actually listens <a class="pr-num mono" href="https://github.com/HIT-Network/dc-data-hub/pull/29">#29</a></span></div>
+      <div class="chg"><span class="tag" style="--bc:var(--ok)">Bug fix</span><span class="scope mono">members</span><span class="chg-txt">The alias fix from the QA pass actually ran <a class="pr-num mono" href="https://github.com/HIT-Network/dc-data-hub/pull/23">#23</a></span></div>
+    </section>
+    <section class="card"><h2>Waiting on review</h2>
+      <p class="explain">One item. This is the NEWS fallback.</p>
+      <div class="pr"><div class="pr-main"><a class="pr-num mono" href="https://github.com/HIT-Network/dc-data-hub/pull/25">#25</a><span class="pr-title">Retire the deleted Railway X-feed adapter instead of 404ing forever</span></div><div class="pr-meta"><span class="badge" style="--bc:var(--idle)">checks: none</span><span class="badge" style="--bc:var(--warn)">4d open</span></div></div>
+    </section>
+    <section class="card"><h2>Known problems</h2>
+      <p class="explain">Open issues on the org repo. Duplicate daily watchdog tickets are gone.</p>
+      <ul class="lines">
+        <li><a href="https://github.com/HIT-Network/dc-data-hub/issues/1">#1</a> Morning Pulse failed 2026-07-24 (tier 2). Still open, 31 days.</li>
+      </ul>
+    </section>
+    <section class="card"><h2>Goals in flight <span class="rule">0 done / 11 open</span></h2>
+      <p class="explain">Same hand list as Friday. The X-feed goal is now a live PR (#25).</p>
+      <ul class="lines">
+        <li>Restore real X posts (TJ's Railway adapter is gone). This is PR #25.</li>
+        <li>Build the two coming-soon toggles: readiness-assessment, portfolio-goals</li>
+        <li>Scorecard polish (batch/compare, shareable report, PDF)</li>
+        <li>Feature-flag audit log</li>
+        <li>Richer per-signal detail (TP/SL ladder, status timeline)</li>
+        <li>Watchlist price alerts</li>
+        <li>Add a test job to CI (537 vitest tests never gate a PR)</li>
+        <li>Protect main</li>
+        <li>Trim the /api/prices fallback payload</li>
+        <li>Add 2027 FOMC dates when the Fed publishes</li>
+        <li>Resolve issue #1 (Morning Pulse, July 24)</li>
+      </ul>
+    </section>
+    <section class="card"><h2>Worth a look</h2>
+      <p class="explain">Things that could bite later.</p>
+      <ul class="lines">
+        <li>NEWS still shows RSS, not tweets, until #25 lands and TJ's adapter is replaced or retired for good.</li>
+        <li>No tests gate PRs. Main is unprotected. Same two gaps as HIT Central. Raise once, not twice.</li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<footer>Generated 2026-08-24 13:55 ET. Read-only. Org source: HIT-Network/hit-central, HIT-Network/dc-data-hub. Friday packet is now MyOS (GitHub org), not the old Windows task on Eron local clones. No commercial or dollar figures.</footer>
+</body>
+</html>
