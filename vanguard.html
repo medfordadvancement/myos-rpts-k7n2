@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vanguard Flooring - Weekly Review 8/20</title>
+<title>Vanguard Flooring Weekly Review 8/27</title>
 <style>
   :root{
     --bg:#f5f7f9; --surface:#ffffff; --surface-2:#eef1f5; --line:#e2e7ee;
@@ -64,33 +64,28 @@
 <body>
 <div class="top">
   <div class="mark">My<b>OS</b> &nbsp;&middot;&nbsp; Scrum master weekly review</div>
-  <h1>Vanguard Flooring</h1>
-  <div class="sub"><b>Week ending 8/20</b> &middot; prepared 2026-08-20 &middot; source: vanguard-flooring repo</div>
+  <h1>Vanguard Flooring Weekly Review 8/27</h1>
+  <div class="sub"><b>Week ending 8/27</b> &middot; prepared 2026-08-30 (catch-up) &middot; source: vanguard-flooring repo</div>
 </div>
 <h2>Where the build stands</h2>
 <div class="stats">
   <div class="stat"><div class="n">12 / 12</div><div class="l">Capability areas built</div></div>
   <div class="stat"><div class="n ok">Green</div><div class="l">All checks passing</div></div>
-  <div class="stat"><div class="n ac">1</div><div class="l">Open PR (docs only)</div></div>
-  <div class="stat"><div class="n ac">32</div><div class="l">Client decisions open</div></div>
+  <div class="stat"><div class="n ac">2</div><div class="l">Open PRs (reporting)</div></div>
+  <div class="stat"><div class="n ac">66</div><div class="l">Client decisions open</div></div>
 </div>
-<p class="muted">Still a review environment, no production launch. The review queue from last week (12 finished PRs waiting) has cleared.</p>
-<h2>Shipped since last review (8/14)</h2>
+<p class="muted">Still a review environment, no production launch. Catch-up draft from live GitHub data. The Thursday 8/27 run was interrupted, so this was prepared Sunday 2026-08-30.</p>
+<h2>Shipped since last review (8/20)</h2>
 <ul>
-  <li><b>Purchasing:</b> vendor master, alias resolution, and a PO dispatch surface that prepares orders but does not send them. Landed 8/17. <span class="tag">#52</span></li>
-  <li><b>Build check:</b> the verify pipeline now runs a full next build. <span class="tag">#53</span></li>
-  <li><b>Tickets:</b> new installation-ticket line items start unselected so nothing is assumed picked. <span class="tag">#61</span><span class="tag">D24</span></li>
-  <li><b>Warehouse walkthrough:</b> findings from 8/19 written into the product record, covering receiving, inventory, and installation tickets. <span class="tag">#60</span></li>
-  <li><b>Design proposals:</b> warehouse locations and stock placement, inventory aging and warehouse reporting, product identity and clipboard. Ready for the team. <span class="tag">#62</span><span class="tag">#63</span><span class="tag">#64</span></li>
-  <li><b>Feedback-stack questions</b> landed and renumbered to OQ-69 through OQ-83 so they do not collide with existing client questions. <span class="tag">#66</span></li>
-  <li><b>Working agreement:</b> stacked changes open against the parent branch, not main. <span class="tag">#65</span></li>
+  <li><b>Docs only:</b> stacked-change merge rule now says retarget the tip to main, confirm the base reads main, then merge. Phase 6 of vendor-master-and-warehouse-inbound reserves migration 0024 so it does not collide with numbers already taken. Landed 8/21. No product feature shipped this week. <span class="tag">#67</span></li>
 </ul>
+<p class="muted">#60 through #66 were already in the 8/20 packet and are not counted again.</p>
 <h2>Watch-item</h2>
 <div class="flag">
-  <p><b>Decision debt has not moved.</b> 32 client-owned and 6 team-owned questions are still open, unchanged since late July. Last week's bottleneck (12 PRs waiting on review) is gone. The only open PR is #67 (documentation, tests green). The risk is unanswered business decisions, not code sitting in review.</p>
+  <p><b>Decision debt is still the blocker.</b> Live tracker count is 66 client-owned still-open (including two dual-owned) and 8 team-owned still-open, across 76 rows. The 8/20 packet still showed 32 / 6. The file itself has not changed since #66 on 8/20. Last week's warehouse and feedback-stack questions were never logged as answered. Two reporting PRs (#68 inventory aging, #69 reporting searchability) are open and green, waiting on review. The risk is unanswered business decisions, not failing checks.</p>
 </div>
 <h2>Decisions queued</h2>
-<p class="muted">Same three from the 7/31 walkthrough, still not logged as resolved. First action: confirm those outcomes and get them logged, or re-decide.</p>
+<p class="muted">Same three from the 7/31 walkthrough, still Open in the tracker. First action: confirm those outcomes and get them logged, or re-decide.</p>
 <div class="decision">
   <p class="q">1. Which catalog items migrate? <span class="tag">OQ-29</span></p>
   <p class="ctx">About 59,000 old items, roughly 80% never used on a bid.</p>
@@ -106,15 +101,16 @@
   <p class="ctx">Line-item detail vs bucket totals, CO tax placement, whether about 3,500 drafts migrate (team says exclude), and confirming win/loss history cannot be backfilled.</p>
 </div>
 <p class="muted">Plus six workflow and permission decisions still open: material-release owner (OQ-17), PO-cancel approval (OQ-18), close-with-open-COs (OQ-19), operationally-complete owner (OQ-20), report visibility (OQ-21), edits during accounting review (OQ-22).</p>
+<p class="muted">Also still open from last week's warehouse walkthrough and feedback stack: OQ-54 through OQ-61, and OQ-69 through OQ-83. OQ-4 is answered (8/19). OQ-11 was already resolved.</p>
 <h2>Suggested flow to drive the meeting</h2>
 <ol class="agenda">
   <li>Log the 7/31 outcomes (catalog, customers, change orders) or re-decide.</li>
   <li>Work the six workflow and permission decisions.</li>
-  <li>Glance at this week's warehouse walkthrough findings so the next build slice is pointed at a real floor process.</li>
+  <li>If there is time, review #68 (material on hand and inventory aging) and #69 (reporting searchability). Both checks are green.</li>
   <li>Confirm the next review date.</li>
 </ol>
 <footer>
-  Generated 2026-08-20 from the Vanguard Flooring repository. Question IDs match the repo tracker. No commercial or dollar figures included.
+  Generated 2026-08-30 from the Vanguard Flooring repository. Catch-up draft. Question IDs match the repo tracker. No commercial or dollar figures included.
 </footer>
 </body>
 </html>
