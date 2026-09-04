@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vanguard Flooring Weekly Review 8/27</title>
+<title>Vanguard Flooring Weekly Review 9/3</title>
 <style>
   :root{
     --bg:#f5f7f9; --surface:#ffffff; --surface-2:#eef1f5; --line:#e2e7ee;
@@ -38,16 +38,15 @@
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:6px 0 4px;}
   .stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow);}
   .stat .n{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1;}
-  .stat .n.ok{color:var(--ok);} .stat .n.ac{color:var(--accent);} .stat .n.warn{color:var(--warn);}
+  .stat .n.ok{color:var(--ok);} .stat .n.ac{color:var(--accent);} .stat .n.warn{color:var(--warn);} .stat .n.crit{color:var(--crit);}
   .stat .l{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:7px;}
   .muted{color:var(--muted);font-size:13px;}
   .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;background:var(--accent-soft);
     color:var(--accent-ink);border-radius:5px;padding:1px 6px;margin-left:4px;}
-  .pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-family:var(--mono);
-    padding:1px 7px;border-radius:20px;background:var(--ok-soft);color:var(--ok);
-    border:1px solid color-mix(in srgb,var(--ok) 30%,transparent);}
   .flag{background:var(--warn-soft);border:1px solid #ecd9a8;border-radius:10px;padding:13px 15px;margin:10px 0;}
   .flag b{color:var(--warn);}
+  .flag.crit{background:var(--crit-soft);border-color:#e8b4b8;}
+  .flag.crit b{color:var(--crit);}
   .decision{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);
     border-radius:8px;padding:12px 15px;margin:10px 0;box-shadow:var(--shadow);}
   .decision .q{font-weight:650;margin:0 0 4px;}
@@ -64,28 +63,33 @@
 <body>
 <div class="top">
   <div class="mark">My<b>OS</b> &nbsp;&middot;&nbsp; Scrum master weekly review</div>
-  <h1>Vanguard Flooring Weekly Review 8/27</h1>
-  <div class="sub"><b>Week ending 8/27</b> &middot; prepared 2026-08-30 (catch-up) &middot; source: vanguard-flooring repo</div>
+  <h1>Vanguard Flooring Weekly Review 9/3</h1>
+  <div class="sub"><b>Week ending 9/3</b> &middot; prepared 2026-09-03 &middot; source: vanguard-flooring repo</div>
 </div>
 <h2>Where the build stands</h2>
 <div class="stats">
   <div class="stat"><div class="n">12 / 12</div><div class="l">Capability areas built</div></div>
-  <div class="stat"><div class="n ok">Green</div><div class="l">All checks passing</div></div>
-  <div class="stat"><div class="n ac">2</div><div class="l">Open PRs (reporting)</div></div>
+  <div class="stat"><div class="n crit">Red</div><div class="l">Main verify failed</div></div>
+  <div class="stat"><div class="n ac">5</div><div class="l">Open PRs</div></div>
   <div class="stat"><div class="n ac">66</div><div class="l">Client decisions open</div></div>
 </div>
-<p class="muted">Still a review environment, no production launch. Catch-up draft from live GitHub data. The Thursday 8/27 run was interrupted, so this was prepared Sunday 2026-08-30.</p>
-<h2>Shipped since last review (8/20)</h2>
+<p class="muted">Still a review environment, no production launch. Live pull from GitHub on 2026-09-03.</p>
+<h2>Shipped since last review (8/27)</h2>
 <ul>
-  <li><b>Docs only:</b> stacked-change merge rule now says retarget the tip to main, confirm the base reads main, then merge. Phase 6 of vendor-master-and-warehouse-inbound reserves migration 0024 so it does not collide with numbers already taken. Landed 8/21. No product feature shipped this week. <span class="tag">#67</span></li>
+  <li><b>Warehouse locations live on main:</b> named warehouse locations, placement on receive, audit reason, and pick-ticket bin. Migration 0024 is in the repo and has not been applied to any environment. Locations ship empty on purpose. <span class="tag">#70</span></li>
+  <li><b>Reporting hardening:</b> fixed the 2026-09-01 calendar time-bomb in contactRollupReport tests, and made reporting.ts searchable again by encoding the NUL key delimiter as an escape. <span class="tag">#71</span> <span class="tag">#69</span></li>
+  <li><b>Docs:</b> Supabase project-name caveat in HANDOFF, Procent walkthrough dated 2026-08-18. <span class="tag">#75</span></li>
 </ul>
-<p class="muted">#60 through #66 were already in the 8/20 packet and are not counted again.</p>
+<p class="muted">#67 was already in the 8/27 packet and is not counted again.</p>
 <h2>Watch-item</h2>
+<div class="flag crit">
+  <p><b>Main verify is red.</b> After docs #75 merged, the verify check on HEAD failed. This is the engineering stop-sign for the week. Ace has been flagged. Decision debt is unchanged underneath it.</p>
+</div>
 <div class="flag">
-  <p><b>Decision debt is still the blocker.</b> Live tracker count is 66 client-owned still-open (including two dual-owned) and 8 team-owned still-open, across 76 rows. The 8/20 packet still showed 32 / 6. The file itself has not changed since #66 on 8/20. Last week's warehouse and feedback-stack questions were never logged as answered. Two reporting PRs (#68 inventory aging, #69 reporting searchability) are open and green, waiting on review. The risk is unanswered business decisions, not failing checks.</p>
+  <p><b>Decision debt is still 66 client / 8 team.</b> Tracker file SHA is unchanged since 8/20. The three 7/31 walkthrough items are still Open. Warehouse #70 explicitly waits on OQ-55 (empty locations list), OQ-58 (disposal), and OQ-52 (drop-ship visibility). Review queue grew to five open PRs (#68 still waiting from last week; #72 #73 #74 #76 new).</p>
 </div>
 <h2>Decisions queued</h2>
-<p class="muted">Same three from the 7/31 walkthrough, still Open in the tracker. First action: confirm those outcomes and get them logged, or re-decide.</p>
+<p class="muted">Same three from the 7/31 walkthrough, plus the warehouse location list that #70 just made concrete. First action: confirm those outcomes and get them logged, or re-decide.</p>
 <div class="decision">
   <p class="q">1. Which catalog items migrate? <span class="tag">OQ-29</span></p>
   <p class="ctx">About 59,000 old items, roughly 80% never used on a bid.</p>
@@ -100,17 +104,21 @@
   <p class="q">3. How are change orders modeled? <span class="tag">OQ-36/37/38/39</span></p>
   <p class="ctx">Line-item detail vs bucket totals, CO tax placement, whether about 3,500 drafts migrate (team says exclude), and confirming win/loss history cannot be backfilled.</p>
 </div>
-<p class="muted">Plus six workflow and permission decisions still open: material-release owner (OQ-17), PO-cancel approval (OQ-18), close-with-open-COs (OQ-19), operationally-complete owner (OQ-20), report visibility (OQ-21), edits during accounting review (OQ-22).</p>
-<p class="muted">Also still open from last week's warehouse walkthrough and feedback stack: OQ-54 through OQ-61, and OQ-69 through OQ-83. OQ-4 is answered (8/19). OQ-11 was already resolved.</p>
+<div class="decision">
+  <p class="q">4. What is the authoritative warehouse locations list? <span class="tag">OQ-55</span></p>
+  <p class="ctx">#70 shipped locations empty on purpose. Until the list is confirmed, receive placement and on-hand reporting stay partial.</p>
+  <p class="ask"><b>Ask:</b> confirm the empty start, or provide the real location names to seed.</p>
+</div>
+<p class="muted">Plus six workflow and permission decisions still open: material-release owner (OQ-17), PO-cancel approval (OQ-18), close-with-open-COs (OQ-19), operationally-complete owner (OQ-20), report visibility (OQ-21), edits during accounting review (OQ-22). Also OQ-52 and OQ-58 from the warehouse work.</p>
 <h2>Suggested flow to drive the meeting</h2>
 <ol class="agenda">
+  <li>Confirm who owns the main verify failure and when it goes green again.</li>
   <li>Log the 7/31 outcomes (catalog, customers, change orders) or re-decide.</li>
-  <li>Work the six workflow and permission decisions.</li>
-  <li>If there is time, review #68 (material on hand and inventory aging) and #69 (reporting searchability). Both checks are green.</li>
-  <li>Confirm the next review date.</li>
+  <li>Confirm OQ-55 (locations list) now that #70 is on main.</li>
+  <li>If there is time, review #68 (inventory aging) and #72 (material move). Both checks are green.</li>
 </ol>
 <footer>
-  Generated 2026-08-30 from the Vanguard Flooring repository. Catch-up draft. Question IDs match the repo tracker. No commercial or dollar figures included.
+  Generated 2026-09-03 from the Vanguard Flooring repository. Question IDs match the repo tracker. No commercial or dollar figures included.
 </footer>
 </body>
 </html>
