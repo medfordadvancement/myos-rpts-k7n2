@@ -1,1 +1,223 @@
-PLACEHOLDER
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Discover Crypto - app portfolio - refreshed 2026-09-11</title>
+<style>
+:root{
+  --bg:#f5f7f9;--surface:#ffffff;--surface-2:#eef1f5;--line:#e2e7ee;
+  --ink:#182130;--muted:#5c6878;--faint:#8a94a6;
+  --accent:#C2410C;--accent-ink:#C2410C;
+  --ok:#0f9a76;--warn:#c1810f;--crit:#d64550;--idle:#7c879b;
+  --shadow:0 1px 2px rgba(24,33,48,.06),0 4px 14px rgba(24,33,48,.05);
+  --mono:ui-monospace,Consolas,"SF Mono",Menlo,monospace;
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0f141a;--surface:#171d25;--surface-2:#1e2630;--line:#2a323d;
+  --ink:#e9edf3;--muted:#93a0b0;--faint:#6c7889;
+  --accent:#F0993D;--accent-ink:#F0993D;
+  --ok:#3bbd97;--warn:#e0a53a;--crit:#e8636d;--idle:#8894a6;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.28);
+}}
+*{box-sizing:border-box}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);margin:0;
+  padding:24px clamp(16px,4vw,40px) 56px;line-height:1.55;max-width:940px;}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+.brand{display:flex;align-items:baseline;gap:11px}
+.mark{font-size:15px;font-weight:700;letter-spacing:-.01em}.mark b{color:var(--accent)}
+h1{font-size:22px;margin:0;letter-spacing:-.02em}
+.sub{font-size:12px;text-transform:uppercase;letter-spacing:.13em;color:var(--faint);margin-top:3px}
+.upd{font-size:12px;color:var(--muted)}
+.intro{font-size:13.5px;color:var(--muted);background:var(--surface-2);border-radius:10px;
+  padding:12px 14px;margin-bottom:16px;border-left:3px solid var(--accent)}
+.asks{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  box-shadow:var(--shadow);margin-bottom:22px}
+.asks h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--accent);
+  margin:0 0 10px;font-weight:600}
+.agenda{counter-reset:s;list-style:none;padding:0;margin:0}
+.agenda li{counter-increment:s;padding:8px 0 8px 31px;position:relative;border-bottom:1px solid var(--line);font-size:14px}
+.agenda li:last-child{border-bottom:none}
+.agenda li::before{content:counter(s);position:absolute;left:0;top:8px;background:var(--accent);color:#fff;
+  width:21px;height:21px;border-radius:50%;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:26px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;box-shadow:var(--shadow)}
+.kpi .n{font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:1;text-transform:capitalize}
+.kpi .l{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:7px}
+.kpi.t-ok .n{color:var(--ok)}.kpi.t-warn .n{color:var(--warn)}.kpi.t-crit .n{color:var(--crit)}
+.kpi.t-accent .n{color:var(--accent)}.kpi.t-idle .n{color:var(--idle)}
+.app{--appc:var(--app);position:relative;margin:0 0 34px;padding-left:16px;border-left:5px solid var(--appc);}
+.aband{background:color-mix(in srgb,var(--appc) 11%,var(--surface));
+  border:1px solid color-mix(in srgb,var(--appc) 32%,var(--line));
+  border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.aname{font-size:19px;font-weight:750;letter-spacing:-.02em;color:var(--appc)}
+.ameta{font-size:11.5px;color:var(--muted);margin-top:3px}
+.ablurb{font-size:13px;color:var(--ink);margin:8px 0 0;opacity:.88}
+.astats{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:9px;margin-bottom:13px}
+.astat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+.astat .n{font-size:17px;font-weight:700;line-height:1;text-transform:capitalize}
+.astat .l{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-top:5px}
+.astat.t-ok .n{color:var(--ok)}.astat.t-warn .n{color:var(--warn)}.astat.t-crit .n{color:var(--crit)}
+.astat.t-accent .n{color:var(--appc)}.astat.t-idle .n{color:var(--idle)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  box-shadow:var(--shadow);margin-bottom:11px}
+.card h2{font-size:12.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);
+  margin:0 0 4px;font-weight:600}
+.card h2 .rule{color:var(--faint);font-weight:400;letter-spacing:.04em;text-transform:none}
+.explain{font-size:12.5px;color:var(--faint);margin:0 0 11px;line-height:1.5;font-style:italic}
+ul.lines{margin:0;padding:0;list-style:none}
+ul.lines li{padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+ul.lines li:last-child{border-bottom:none}
+.empty{font-size:13px;color:var(--faint);font-style:italic}
+.chg{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;padding:7px 0;border-bottom:1px solid var(--line)}
+.chg:last-child{border-bottom:none}
+.tag{flex:none;font-size:10.5px;font-weight:600;letter-spacing:.03em;padding:2px 8px;border-radius:5px;
+  background:color-mix(in srgb,var(--bc) 14%,transparent);color:var(--bc);
+  border:1px solid color-mix(in srgb,var(--bc) 32%,transparent);white-space:nowrap}
+.scope{flex:none;font-size:11px;color:var(--faint);background:var(--surface-2);padding:1px 6px;border-radius:4px}
+.chg-txt{font-size:13.5px;min-width:0}
+.pr{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  padding:9px 0;border-bottom:1px solid var(--line)}
+.pr:last-child{border-bottom:none}
+.pr-main{display:flex;align-items:baseline;gap:9px;min-width:0}
+.pr-num{color:var(--accent-ink);font-weight:600;font-size:13px;flex:none;text-decoration:none}
+.pr-title{font-size:14px}
+.pr-meta{display:flex;align-items:center;gap:8px;flex:none;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;padding:2px 9px;border-radius:20px;
+  background:color-mix(in srgb, var(--bc) 12%, transparent);color:var(--bc);border:1px solid color-mix(in srgb,var(--bc) 30%,transparent)}
+.note{font-size:13.5px;color:var(--muted);background:var(--surface-2);border-radius:9px;padding:11px 13px}
+footer{font-size:11.5px;color:var(--faint);margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
+a{color:inherit}
+@media (max-width:560px){ .app{padding-left:11px;border-left-width:4px} }
+</style>
+</head>
+<body>
+<div class="top">
+  <div>
+    <div class="brand"><span class="mark">Discover <b>Crypto</b></span></div>
+    <h1>Discover Crypto - app portfolio</h1>
+    <div class="sub">Weekly packet - refreshed 2026-09-11</div>
+  </div>
+  <div class="upd">2026-09-11 10:20 ET</div>
+</div>
+
+<div class="intro">Plain-English read on the two Discover Crypto apps for the week since the Sep 4 packet. "Shipped" means finished and live on main. "Waiting on review" means a PR is open and nobody has approved it. "Flags" are things worth a look, not errors. Read-only. Source of truth is the HIT-Network org repos. <b>Goals files and digests folder on Wade's computer could not be read this run</b> (local-exec approval unanswered). Goals sections below are marked unread. No invented goal KPIs.</div>
+
+<div class="asks">
+  <h2>What to do this week</h2>
+  <ol class="agenda">
+    <li><b>Blocked on Eron: three open Hub tickets, two still pinging today.</b> <a href="https://github.com/HIT-Network/dc-data-hub/issues/35">#35</a> signals board (17 days) and <a href="https://github.com/HIT-Network/dc-data-hub/issues/36">#36</a> member access (12 days) are assigned to him and updated today. Morning Pulse <a href="https://github.com/HIT-Network/dc-data-hub/issues/1">#1</a> from July 24 is still open (49 days).</li>
+    <li><b>Blocked on review (TJ / whoever owns NEWS): #25 has sat 21 days with no reviews.</b> <a href="https://github.com/HIT-Network/dc-data-hub/pull/25">#25</a> retires the dead Railway X-feed adapter. Goals file was unread this run (Wade PC local-exec approval never came), so this ask is GitHub-only.</li>
+    <li><b>Close or rebase the HIT Central graveyard.</b> Ask Eron: Lex draft <a href="https://github.com/HIT-Network/hit-central/pull/5">#5</a> (77 days) and tracker QA <a href="https://github.com/HIT-Network/hit-central/pull/40">#40</a> (37 days). CSP Stage 1 <a href="https://github.com/HIT-Network/hit-central/pull/63">#63</a> / Hub <a href="https://github.com/HIT-Network/dc-data-hub/pull/38">#38</a> are now 10 days with no movement.</li>
+  </ol>
+</div>
+
+<div class="kpis">
+  <div class="kpi t-ok"><div class="n mono">7</div><div class="l">PRs shipped this week</div></div>
+  <div class="kpi"><div class="n mono">5</div><div class="l">Awaiting review</div></div>
+  <div class="kpi t-warn"><div class="n mono">3</div><div class="l">Open Hub issues</div></div>
+  <div class="kpi t-idle"><div class="n mono">n/a</div><div class="l">Goals (file unread)</div></div>
+  <div class="kpi t-warn"><div class="n mono">5</div><div class="l">Flags to look at</div></div>
+</div>
+
+<div class="app" style="--app:#3B82C4">
+  <header class="aband">
+    <div class="aname">HIT Central</div>
+    <div class="ameta mono">HIT-Network/hit-central  -  last activity Fri 10:16 AM ET</div>
+    <p class="ablurb">Internal workspace for creator tools (thumbnails, long-form, boards, deals, Socials Hub, desk trader) at app.hitnetwork.ai.</p>
+  </header>
+  <div class="astats">
+    <div class="astat t-ok"><div class="n mono">6</div><div class="l">Shipped this week</div></div>
+    <div class="astat"><div class="n mono">3</div><div class="l">Awaiting review</div></div>
+    <div class="astat t-idle"><div class="n mono">n/a</div><div class="l">Goals (unread)</div></div>
+    <div class="astat t-ok"><div class="n mono">0</div><div class="l">Open issues</div></div>
+    <div class="astat t-ok"><div class="n mono">Fri</div><div class="l">Last activity</div></div>
+  </div>
+  <div class="asections">
+    <section class="card"><h2>In plain English</h2>
+      <div class="note">Desk-trader week. Eron shipped a six-PR streak (#83–#89) fixing live copy-trading pain: false reconcile halts on the worker's own stops, missing venue stop IDs, unconfirmed stops that left XPL naked ~12h, set-and-forget stop handling so the desk never strips a live stop, signal leverage instead of desk-max (so liquidation does not sit inside the stop), and flat/missing positions that must not halt the desk. Ancient PRs (#5, #40) and CSP #63 still did not move.</div>
+    </section>
+    <section class="card"><h2>What shipped this week <span class="rule">6 PRs</span></h2>
+      <p class="explain">Work that is finished and already live on main. Grouped by theme.</p>
+      <div class="chg"><span class="tag" style="--bc:var(--ok)">Bug fix</span><span class="scope mono">desk-trader</span><span class="chg-txt">Flat/missing position must not halt reconcile <a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/89">#89</a></span></div>
+      <div class="chg"><span class="tag" style="--bc:var(--ok)">Bug fix</span><span class="scope mono">desk-trader</span><span class="chg-txt">Use the signal's leverage, not the desk max (stops liquidation-inside-stop) <a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/88">#88</a></span></div>
+      <div class="chg"><span class="tag" style="--bc:var(--ok)">Bug fix</span><span class="scope mono">desk-trader</span><span class="chg-txt">Set-and-forget: never strip a live stop, never halt on a still-protected position <a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/87">#87</a></span></div>
+      <div class="chg"><span class="tag" style="--bc:var(--ok)">Bug fix</span><span class="scope mono">desk-trader</span><span class="chg-txt">Confirm copy-trading stop is resting or fail it (never naked; XPL ran ~12h unprotected) <a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/86">#86</a></span></div>
+      <div class="chg"><span class="tag" style="--bc:var(--ok)">Bug fix</span><span class="scope mono">desk-trader</span><span class="chg-txt">Recover stop/TP venue id after placement; stop false orphan halts on own protective orders <a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/84">#84</a> <a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/83">#83</a></span></div>
+    </section>
+    <section class="card"><h2>Waiting on review</h2>
+      <p class="explain">Finished work waiting on a teammate. Anything here more than a few days is stuck.</p>
+      <div class="pr"><div class="pr-main"><a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/63">#63</a><span class="pr-title">CSP Stage 1 : Report-Only nonce policy (Eron)</span></div><div class="pr-meta"><span class="badge" style="--bc:var(--warn)">10d open</span></div></div>
+      <div class="pr"><div class="pr-main"><a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/40">#40</a><span class="pr-title">Six findings from the tracker-feed QA pass</span></div><div class="pr-meta"><span class="badge" style="--bc:var(--crit)">37d open</span></div></div>
+      <div class="pr"><div class="pr-main"><a class="pr-num mono" href="https://github.com/HIT-Network/hit-central/pull/5">#5</a><span class="pr-title">Dashboard ops layer (still a draft, Lex)</span></div><div class="pr-meta"><span class="badge" style="--bc:var(--idle)">draft</span><span class="badge" style="--bc:var(--crit)">77d open</span></div></div>
+    </section>
+    <section class="card"><h2>Goals in flight <span class="rule">unread</span></h2>
+      <p class="explain">hit-central-goals.md lives on Wade's PC. Local-exec approval did not come through this Friday run, so the list was not re-read. Do not treat last week's goals as confirmed current.</p>
+      <p class="empty">Goals file unread this run.</p>
+    </section>
+    <section class="card"><h2>Worth a look</h2>
+      <p class="explain">Things that could bite later.</p>
+      <ul class="lines">
+        <li>#40 has waited 37 days. #5 has waited 77 days as a draft. CSP #63 is now 10 days with no reviews.</li>
+        <li>Desk-trader fixes this week came from live incidents (false halts, naked XPL, leverage vs stop). Still needs a controlled demo round-trip before trusting real-money arming.</li>
+        <li>No goals re-check this week because the brain vault was unreachable without PC approval.</li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<div class="app" style="--app:#E17A16">
+  <header class="aband">
+    <div class="aname">DC Data Hub</div>
+    <div class="ameta mono">HIT-Network/dc-data-hub  -  last activity Sun 1:16 AM ET</div>
+    <p class="ablurb">Members-only crypto dashboard for paying subscribers at app.discovercrypto.live.</p>
+  </header>
+  <div class="astats">
+    <div class="astat t-ok"><div class="n mono">1</div><div class="l">Shipped this week</div></div>
+    <div class="astat"><div class="n mono">2</div><div class="l">Awaiting review</div></div>
+    <div class="astat t-idle"><div class="n mono">n/a</div><div class="l">Goals (unread)</div></div>
+    <div class="astat t-warn"><div class="n mono">3</div><div class="l">Open issues</div></div>
+    <div class="astat"><div class="n mono">Sun</div><div class="l">Last activity</div></div>
+  </div>
+  <div class="asections">
+    <section class="card"><h2>In plain English</h2>
+      <div class="note">One big ship: Kelly merged HUB-1.8 entitlement spine (#41), built dark for the DC-CONNECT arc. Hub becomes the only place DC Research Pro tier truth lives, with every switch OFF at merge so no member tier changes yet. NEWS is still on the Railway fallback. Watchdogs #35 and #36 keep updating and stay on Eron. CSP #38 and X-feed #25 still wait for review.</div>
+    </section>
+    <section class="card"><h2>What shipped this week <span class="rule">1 PR</span></h2>
+      <p class="explain">Finished and already live on main.</p>
+      <div class="chg"><span class="tag" style="--bc:var(--accent)">New feature</span><span class="scope mono">entitlements</span><span class="chg-txt">HUB-1.8 entitlement spine, built dark (DC-CONNECT). Apply migration by hand before any switch flips. <a class="pr-num mono" href="https://github.com/HIT-Network/dc-data-hub/pull/41">#41</a></span></div>
+    </section>
+    <section class="card"><h2>Waiting on review</h2>
+      <p class="explain">Two items. #25 is still the NEWS fallback.</p>
+      <div class="pr"><div class="pr-main"><a class="pr-num mono" href="https://github.com/HIT-Network/dc-data-hub/pull/38">#38</a><span class="pr-title">CSP Stage 1 : Report-Only nonce policy (Eron)</span></div><div class="pr-meta"><span class="badge" style="--bc:var(--warn)">10d open</span></div></div>
+      <div class="pr"><div class="pr-main"><a class="pr-num mono" href="https://github.com/HIT-Network/dc-data-hub/pull/25">#25</a><span class="pr-title">Retire the deleted Railway X-feed adapter instead of 404ing forever</span></div><div class="pr-meta"><span class="badge" style="--bc:var(--crit)">21d open</span></div></div>
+    </section>
+    <section class="card"><h2>Known problems</h2>
+      <p class="explain">Open issues on the org repo. Watchdogs stay one ticket each.</p>
+      <ul class="lines">
+        <li><a href="https://github.com/HIT-Network/dc-data-hub/issues/36">#36</a> Member access degraded (opened Aug 30, 12 days). Assigned to Eron. Updated today.</li>
+        <li><a href="https://github.com/HIT-Network/dc-data-hub/issues/35">#35</a> Signals board degraded (opened Aug 24, 17 days). Assigned to Eron. Updated today.</li>
+        <li><a href="https://github.com/HIT-Network/dc-data-hub/issues/1">#1</a> Morning Pulse failed 2026-07-24 (tier 2). Still open, 49 days.</li>
+      </ul>
+    </section>
+    <section class="card"><h2>Goals in flight <span class="rule">unread</span></h2>
+      <p class="explain">dc-data-hub-goals.md lives on Wade's PC. Local-exec approval did not come through this Friday run, so the list was not re-read.</p>
+      <p class="empty">Goals file unread this run.</p>
+    </section>
+    <section class="card"><h2>Worth a look</h2>
+      <p class="explain">Things that could bite later.</p>
+      <ul class="lines">
+        <li>NEWS still shows RSS, not tweets, until #25 lands or the adapter is restored.</li>
+        <li>HUB-1.8 is live in code but dark. Migration 0022 must be applied by hand before HUB-1.8b flips any switch. Mint still keeps isTeamEmail until that flip.</li>
+        <li>Watchdogs #35/#36 are still open and still updating. Same Eron ask as the last two packets.</li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<footer>Generated 2026-09-11 10:20 ET. Read-only. Org source: HIT-Network/hit-central, HIT-Network/dc-data-hub. Goals files NOT read this run (Wade PC local-exec unanswered). Digests folder not written. No commercial or dollar figures. Windows task "Discover Crypto - Weekly App Packet" stays Disabled.</footer>
+</body>
+</html>
