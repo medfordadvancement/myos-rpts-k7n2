@@ -128,13 +128,13 @@
     critical: {soft:"var(--crit-soft)", ink:"var(--crit)", stripe:"var(--crit)"}
   };
   const DATA = {
-    updated: "2026-09-17",
+    updated: "2026-09-24",
     projects: [
       {name:"Vanguard Flooring", subtitle:"Commercial flooring operations app", stage:"migration",
-       health:"attention", healthNote:"Main/PR verify green; decision debt still 74 client / 9 team", clientDecisions:74, teamDecisions:9,
+       health:"attention", healthNote:"Main/PR verify green; decision debt now 73 client / 11 team", clientDecisions:73, teamDecisions:11,
        nextMilestone:"Log 7/31 catalog / customer / CO decisions + OQ-55",
-       blocker:"74 client decisions still open (unchanged since 9/10). OQ-55 still blocks warehouse locations seed. Open green PRs: #100 bids duplicate, #101 warehouse inbound.",
-       blockerLevel:"critical", updated:"2026-09-17", sample:false},
+       blocker:"73 client decisions still open (was 74). OQ-55 still blocks warehouse locations seed. Open green PR: #103 stock sale-price markup. #100/#101 shipped.",
+       blockerLevel:"critical", updated:"2026-09-24", sample:false},
       {name:"Sample Client A", subtitle:"Placeholder - replace when you onboard the next project", stage:"discovery",
        health:"idle", healthNote:"Not started", clientDecisions:0, teamDecisions:0,
        nextMilestone:"Scope workshop", blocker:"", blockerLevel:"", updated:"2026-07-31", sample:true},

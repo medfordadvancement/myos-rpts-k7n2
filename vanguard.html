@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vanguard Flooring Weekly Review 9/17</title>
+<title>Vanguard Flooring Weekly Review 9/24</title>
 <style>
   :root{
     --bg:#f5f7f9; --surface:#ffffff; --surface-2:#eef1f5; --line:#e2e7ee;
@@ -63,31 +63,30 @@
 <body>
 <div class="top">
   <div class="mark">My<b>OS</b> &nbsp;&middot;&nbsp; Scrum master weekly review</div>
-  <h1>Vanguard Flooring Weekly Review 9/17</h1>
-  <div class="sub"><b>Week ending 9/17</b> &middot; prepared 2026-09-17 &middot; source: vanguard-flooring repo</div>
+  <h1>Vanguard Flooring Weekly Review 9/24</h1>
+  <div class="sub"><b>Week ending 9/24</b> &middot; prepared 2026-09-24 &middot; source: vanguard-flooring repo</div>
 </div>
 <h2>Where the build stands</h2>
 <div class="stats">
   <div class="stat"><div class="n">12 / 12</div><div class="l">Capability areas built</div></div>
   <div class="stat"><div class="n ok">Green</div><div class="l">Main / PR verify</div></div>
-  <div class="stat"><div class="n ac">2</div><div class="l">Open PRs (both green)</div></div>
-  <div class="stat"><div class="n warn">74</div><div class="l">Client decisions open</div></div>
+  <div class="stat"><div class="n ac">1</div><div class="l">Open PRs (green)</div></div>
+  <div class="stat"><div class="n warn">73</div><div class="l">Client decisions open</div></div>
 </div>
-<p class="muted">Still a review / migration environment. Chat depth landed hard this week (threads, search, attachments). Live pull from GitHub on 2026-09-17.</p>
-<h2>Shipped since last review (9/10)</h2>
+<p class="muted">Still a review / migration environment. Bids duplicate and warehouse inbound landed this week. Live pull from GitHub on 2026-09-24 via gh on Wade PC.</p>
+<h2>Shipped since last review (9/17)</h2>
 <ul>
-  <li><b>Chat depth:</b> threads + unread badge, conversation search and hidden-tab notifications, render attachments, and attach a file when composing. <span class="tag">#93</span> <span class="tag">#96</span> <span class="tag">#98</span> <span class="tag">#99</span></li>
-  <li><b>CRM credit race:</b> credit approve/decline now serializes through a transactional CAS arbiter so concurrent decisions do not lost-update. <span class="tag">#94</span></li>
-  <li><b>Chat layout fix:</b> list header no longer overflows into the conversation pane. <span class="tag">#97</span></li>
-  <li><b>OpenSpec hygiene:</b> archive #92/#93/#94 and sync specs (ratchet 35 to 18). <span class="tag">#95</span></li>
+  <li><b>Bids:</b> duplicate a bid to another customer. <span class="tag">#100</span></li>
+  <li><b>Warehouse inbound:</b> arriving-this-week inbound view (item 1.10 / Phase 6). <span class="tag">#101</span></li>
+  <li><b>OpenSpec hygiene:</b> archive four shipped changes; ratchet 23 to 18. <span class="tag">#102</span></li>
 </ul>
-<p class="muted">#92 (embedded Google Chat) was already in the 9/10 packet and is not counted again.</p>
+<p class="muted">Main tip is the #102 merge. Verify is green on main and on the open PR.</p>
 <h2>Watch-item</h2>
 <div class="flag crit">
-  <p><b>Client decision debt is still 74</b> (unchanged from 9/10). Team-owned Hit Network open is still 9 (plus OQ-86 with Build lead). Main and open-PR verify are green, so the stop-sign remains unanswered business decisions, not code review.</p>
+  <p><b>Client decision debt is the stop-sign.</b> Client-owned open moved to 73 (was 74). Team-owned open is now 11 (was 9: Hit Network plus Build lead OQ-86). Main and open-PR verify are green, so the bottleneck remains unanswered business decisions, not code review.</p>
 </div>
 <div class="flag">
-  <p><b>Two green PRs are waiting:</b> #100 (duplicate a bid to another customer) and #101 (arriving-this-week warehouse inbound view). They can merge when the team is ready. Warehouse locations still ship empty pending OQ-55.</p>
+  <p><b>One green PR is waiting:</b> #103 (stock sale-price as a configurable markup over cost, item 2.18). It can merge when the team is ready. Warehouse locations still ship empty pending OQ-55. #100 and #101 shipped this week.</p>
 </div>
 <h2>Decisions queued</h2>
 <p class="muted">Same three from the 7/31 walkthrough, plus the warehouse location list. First action: confirm those outcomes and get them logged, or re-decide.</p>
@@ -107,19 +106,20 @@
 </div>
 <div class="decision">
   <p class="q">4. What is the authoritative warehouse locations list? <span class="tag">OQ-55</span></p>
-  <p class="ctx">Locations still ship empty on purpose after the warehouse work. Until the list is confirmed, receive placement and on-hand reporting stay partial. #101 (arriving-this-week inbound) is green and waiting.</p>
+  <p class="ctx">Locations still ship empty on purpose after the warehouse work. Until the list is confirmed, receive placement and on-hand reporting stay partial. #101 (arriving-this-week inbound) shipped this week.</p>
   <p class="ask"><b>Ask:</b> confirm the empty start, or provide the real location names to seed.</p>
 </div>
-<p class="muted">Plus six workflow and permission decisions still open: material-release owner (OQ-17), PO-cancel approval (OQ-18), close-with-open-COs (OQ-19), operationally-complete owner (OQ-20), report visibility (OQ-21), edits during accounting review (OQ-22). Also OQ-52 and OQ-58 from the warehouse work. Tracker still holds OQ-81 through OQ-93.</p>
+<p class="muted">Plus six workflow and permission decisions still open: material-release owner (OQ-17), PO-cancel approval (OQ-18), close-with-open-COs (OQ-19), operationally-complete owner (OQ-20), report visibility (OQ-21), edits during accounting review (OQ-22). Also OQ-52 and OQ-58 from the warehouse work. Tracker still holds OQ-81 through OQ-91 on the client side; OQ-92 moved to team.</p>
 <h2>Suggested flow to drive the meeting</h2>
 <ol class="agenda">
   <li>Log the 7/31 outcomes (catalog, customers, change orders) or re-decide.</li>
-  <li>Confirm OQ-55 (locations list), especially with #101 ready on inbound.</li>
-  <li>Glance at #100 / #101 and decide merge timing. Both checks are green.</li>
-  <li>Park non-blocking OQ-81..93 rows so the meeting stays on go-live blockers.</li>
+  <li>Confirm OQ-55 (locations list), especially now that #101 inbound has shipped.</li>
+  <li>Glance at #103 and decide merge timing. Checks are green.</li>
+  <li>Park non-blocking later OQ rows so the meeting stays on go-live blockers.</li>
 </ol>
 <footer>
-  Generated 2026-09-17 from the Vanguard Flooring repository. Question IDs match the repo tracker. No commercial or dollar figures included.
+  Generated 2026-09-24 from the Vanguard Flooring repository. Question IDs match the repo tracker. No commercial or dollar figures included.
 </footer>
+
 </body>
 </html>
