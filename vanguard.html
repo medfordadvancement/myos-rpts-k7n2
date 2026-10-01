@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vanguard Flooring Weekly Review 9/24</title>
+<title>Vanguard Flooring Weekly Review 10/1</title>
 <style>
   :root{
     --bg:#f5f7f9; --surface:#ffffff; --surface-2:#eef1f5; --line:#e2e7ee;
@@ -63,33 +63,37 @@
 <body>
 <div class="top">
   <div class="mark">My<b>OS</b> &nbsp;&middot;&nbsp; Scrum master weekly review</div>
-  <h1>Vanguard Flooring Weekly Review 9/24</h1>
-  <div class="sub"><b>Week ending 9/24</b> &middot; prepared 2026-09-24 &middot; source: vanguard-flooring repo</div>
+  <h1>Vanguard Flooring Weekly Review 10/1</h1>
+  <div class="sub"><b>Week ending 10/1</b> &middot; prepared 2026-10-01 &middot; source: vanguard-flooring repo</div>
 </div>
 <h2>Where the build stands</h2>
 <div class="stats">
   <div class="stat"><div class="n">12 / 12</div><div class="l">Capability areas built</div></div>
   <div class="stat"><div class="n ok">Green</div><div class="l">Main / PR verify</div></div>
-  <div class="stat"><div class="n ac">1</div><div class="l">Open PRs (green)</div></div>
+  <div class="stat"><div class="n ac">0</div><div class="l">Open PRs</div></div>
   <div class="stat"><div class="n warn">73</div><div class="l">Client decisions open</div></div>
 </div>
-<p class="muted">Still a review / migration environment. Bids duplicate and warehouse inbound landed this week. Live pull from GitHub on 2026-09-24 via gh on Wade PC.</p>
-<h2>Shipped since last review (9/17)</h2>
+<p class="muted">Still a review / migration environment. My Stuff, team remove-restore, sale-price markup, and large uploads landed this week. Live pull from GitHub on 2026-10-01 via gh on Wade PC.</p>
+<h2>Shipped since last review (9/24)</h2>
 <ul>
-  <li><b>Bids:</b> duplicate a bid to another customer. <span class="tag">#100</span></li>
-  <li><b>Warehouse inbound:</b> arriving-this-week inbound view (item 1.10 / Phase 6). <span class="tag">#101</span></li>
-  <li><b>OpenSpec hygiene:</b> archive four shipped changes; ratchet 23 to 18. <span class="tag">#102</span></li>
+  <li><b>Inventory:</b> stock sale-price as a configurable markup over cost (item 2.18). <span class="tag">#103</span></li>
+  <li><b>My Stuff:</b> per-user dashboard. <span class="tag">#111</span></li>
+  <li><b>Team admin:</b> Owner/GM can remove and restore a user. <span class="tag">#114</span></li>
+  <li><b>Uploads:</b> attachments up to 50 MB via direct-to-storage. <span class="tag">#115</span></li>
+  <li><b>Deploy hardening:</b> DB lag guard, SIGPIPE fix, deploy:prod --dev. <span class="tag">#106</span><span class="tag">#108</span><span class="tag">#109</span></li>
+  <li><b>Code-QA:</b> security and correctness pass; cost/margin visibility. <span class="tag">#113</span></li>
+  <li><b>Docs / handoff:</b> phase 6 archive, OQ-55 recorded, prod+dev promotions. <span class="tag">#104</span><span class="tag">#107</span><span class="tag">#110</span><span class="tag">#112</span></li>
 </ul>
-<p class="muted">Main tip is the #102 merge. Verify is green on main and on the open PR.</p>
+<p class="muted">Main tip is the #115 merge (<span class="mono">e56d5d7</span>). Verify is green on main. Queue is empty.</p>
 <h2>Watch-item</h2>
 <div class="flag crit">
-  <p><b>Client decision debt is the stop-sign.</b> Client-owned open moved to 73 (was 74). Team-owned open is now 11 (was 9: Hit Network plus Build lead OQ-86). Main and open-PR verify are green, so the bottleneck remains unanswered business decisions, not code review.</p>
+  <p><b>Client decision debt is still the stop-sign.</b> Headline counts stay 73 client / 11 team. OQ-55 (warehouse locations) is answered and entered in prod. New client open: OQ-94 (Field Superintendent cost visibility). Main verify is green and there are no open PRs, so the bottleneck remains unanswered business decisions, not code review.</p>
 </div>
 <div class="flag">
-  <p><b>One green PR is waiting:</b> #103 (stock sale-price as a configurable markup over cost, item 2.18). It can merge when the team is ready. Warehouse locations still ship empty pending OQ-55. #100 and #101 shipped this week.</p>
+  <p><b>OQ-55 closed in prod.</b> Norcross and Huntsville hold stock; Kennesaw and Product Care do not. Tampa is not entered yet (does not exist). Receive placement and on-hand reporting can use real locations now.</p>
 </div>
 <h2>Decisions queued</h2>
-<p class="muted">Same three from the 7/31 walkthrough, plus the warehouse location list. First action: confirm those outcomes and get them logged, or re-decide.</p>
+<p class="muted">Same three from the 7/31 walkthrough, plus the new Field Superintendent cost question. First action: confirm those outcomes and get them logged, or re-decide.</p>
 <div class="decision">
   <p class="q">1. Which catalog items migrate? <span class="tag">OQ-29</span></p>
   <p class="ctx">About 59,000 old items, roughly 80% never used on a bid.</p>
@@ -105,21 +109,20 @@
   <p class="ctx">Line-item detail vs bucket totals, CO tax placement, whether about 3,500 drafts migrate (team says exclude), and confirming win/loss history cannot be backfilled.</p>
 </div>
 <div class="decision">
-  <p class="q">4. What is the authoritative warehouse locations list? <span class="tag">OQ-55</span></p>
-  <p class="ctx">Locations still ship empty on purpose after the warehouse work. Until the list is confirmed, receive placement and on-hand reporting stay partial. #101 (arriving-this-week inbound) shipped this week.</p>
-  <p class="ask"><b>Ask:</b> confirm the empty start, or provide the real location names to seed.</p>
+  <p class="q">4. Should Field Superintendent see cost figures on purchasing and warehouse screens? <span class="tag">OQ-94</span></p>
+  <p class="ctx">Role matrix gives that role PO and warehouse read, but no job costing. Until 9/29 those reads still showed vendor unit cost, stock cost, and related figures. Code now treats job-costing permission as the gate for every cost figure.</p>
+  <p class="ask"><b>Ask:</b> confirm cost figures stay hidden for Field Superintendent, or name which cost fields that role may see.</p>
 </div>
-<p class="muted">Plus six workflow and permission decisions still open: material-release owner (OQ-17), PO-cancel approval (OQ-18), close-with-open-COs (OQ-19), operationally-complete owner (OQ-20), report visibility (OQ-21), edits during accounting review (OQ-22). Also OQ-52 and OQ-58 from the warehouse work. Tracker still holds OQ-81 through OQ-91 on the client side; OQ-92 moved to team.</p>
+<p class="muted">Plus six workflow and permission decisions still open: material-release owner (OQ-17), PO-cancel approval (OQ-18), close-with-open-COs (OQ-19), operationally-complete owner (OQ-20), report visibility (OQ-21), edits during accounting review (OQ-22). Also OQ-52 and OQ-58 from the warehouse work. Tracker still holds OQ-81 through OQ-91 on the client side.</p>
 <h2>Suggested flow to drive the meeting</h2>
 <ol class="agenda">
   <li>Log the 7/31 outcomes (catalog, customers, change orders) or re-decide.</li>
-  <li>Confirm OQ-55 (locations list), especially now that #101 inbound has shipped.</li>
-  <li>Glance at #103 and decide merge timing. Checks are green.</li>
+  <li>Confirm OQ-94 (Field Superintendent cost visibility) after the 9/29 code-QA pass.</li>
+  <li>Note OQ-55 closed and locations live in prod. No open PRs to triage.</li>
   <li>Park non-blocking later OQ rows so the meeting stays on go-live blockers.</li>
 </ol>
 <footer>
-  Generated 2026-09-24 from the Vanguard Flooring repository. Question IDs match the repo tracker. No commercial or dollar figures included.
+  MyOS weekly review for Vanguard Flooring. Read-only. No commercial terms. Prepared 2026-10-01 15:55 ET from jbizzle99/vanguard-flooring via gh (medfordadvancement) on Wade PC.
 </footer>
-
 </body>
 </html>
