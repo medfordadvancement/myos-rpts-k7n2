@@ -128,13 +128,13 @@
     critical: {soft:"var(--crit-soft)", ink:"var(--crit)", stripe:"var(--crit)"}
   };
   const DATA = {
-    updated: "2026-10-15",
+    updated: "2026-10-22",
 projects: [
 {name:"Vanguard Flooring", subtitle:"Commercial flooring operations app", stage:"migration",
-health:"attention", healthNote:"Live 2026-10-15: main CI red (GitHub billing block on repo owner account, not code); 20 open PRs; decision debt 71 client / 11 team", clientDecisions:71, teamDecisions:11,
-nextMilestone:"Nick's approval numbers (OQ-101) + OQ-102 confirm, then clear CI and merge the 10/14 PRs",
-blocker:"Main CI red since 10/15 on a GitHub Actions billing block (repo owner account). 20 PRs waiting. Client: OQ-101, OQ-102, OQ-41/23, then OQ-29/31-33/36-39 and OQ-94. Shipped 15 since 10/6.",
-blockerLevel:"critical", updated:"2026-10-15", sample:false},
+health:"attention", healthNote:"Live 2026-10-22: Wave 1, hardening and Wave 2 shipped; main CI red since 10/21 (GitHub billing block on HIT-Network org); 1 open PR; decision debt 78 client / 11 team", clientDecisions:78, teamDecisions:11,
+nextMilestone:"Clear the HIT-Network Actions billing block; Nick's approval numbers (OQ-101) and Dan's Workspace setup (OQ-98) to turn on shipped features",
+blocker:"Main CI red since 10/21 on a GitHub Actions billing block (HIT-Network org); #176 and #177 merged on local tests with no recorded review. Client: OQ-101, OQ-98/110, OQ-41/23, OQ-104. Shipped 18 PRs since 10/15.",
+blockerLevel:"critical", updated:"2026-10-22", sample:false},
       {name:"Sample Client A", subtitle:"Placeholder - replace when you onboard the next project", stage:"discovery",
        health:"idle", healthNote:"Not started", clientDecisions:0, teamDecisions:0,
        nextMilestone:"Scope workshop", blocker:"", blockerLevel:"", updated:"2026-07-31", sample:true},
