@@ -128,13 +128,13 @@
     critical: {soft:"var(--crit-soft)", ink:"var(--crit)", stripe:"var(--crit)"}
   };
   const DATA = {
-    updated: "2026-10-22",
+    updated: "2026-10-29",
 projects: [
 {name:"Vanguard Flooring", subtitle:"Commercial flooring operations app", stage:"migration",
-health:"attention", healthNote:"Live 2026-10-22: Wave 1, hardening and Wave 2 shipped; main CI red since 10/21 (GitHub billing block on HIT-Network org); 1 open PR; decision debt 78 client / 11 team", clientDecisions:78, teamDecisions:11,
-nextMilestone:"Clear the HIT-Network Actions billing block; Nick's approval numbers (OQ-101) and Dan's Workspace setup (OQ-98) to turn on shipped features",
-blocker:"Main CI red since 10/21 on a GitHub Actions billing block (HIT-Network org); #176 and #177 merged on local tests with no recorded review. Client: OQ-101, OQ-98/110, OQ-41/23, OQ-104. Shipped 18 PRs since 10/15.",
-blockerLevel:"critical", updated:"2026-10-22", sample:false},
+health:"attention", healthNote:"Live 2026-10-29: UI polish release (#179) shipped; main CI green again (billing block cleared); 4 open PRs incl. People and permissions (#181); decision debt 79 client / 11 team", clientDecisions:79, teamDecisions:11,
+nextMilestone:"Nick's approval numbers (OQ-101) and Dan's Workspace setup (OQ-98) to turn on shipped features; recorded review on #181 before merge",
+blocker:"Client: OQ-101, OQ-98/110, OQ-41/23, OQ-104 still holding shipped features; new OQ-111. Team: #176, #177 and #179 merged with no recorded review; #181 changes permissions and needs one. Shipped 1 PR since 10/22.",
+blockerLevel:"attention", updated:"2026-10-29", sample:false},
       {name:"Sample Client A", subtitle:"Placeholder - replace when you onboard the next project", stage:"discovery",
        health:"idle", healthNote:"Not started", clientDecisions:0, teamDecisions:0,
        nextMilestone:"Scope workshop", blocker:"", blockerLevel:"", updated:"2026-07-31", sample:true},
