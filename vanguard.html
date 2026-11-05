@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vanguard Flooring Weekly Review 10/29</title>
+<title>Vanguard Flooring Weekly Review 11/05</title>
 <style>
   :root{
     --bg:#f5f7f9; --surface:#ffffff; --surface-2:#eef1f5; --line:#e2e7ee;
@@ -63,62 +63,65 @@
 <body>
 <div class="top">
   <div class="mark">My<b>OS</b> &nbsp;&middot;&nbsp; Scrum master weekly review</div>
-  <h1>Vanguard Flooring Weekly Review 10/29</h1>
-  <div class="sub"><b>Week ending 10/29</b> &middot; prepared 2026-10-29 &middot; source: vanguard-flooring repo (live)</div>
+  <h1>Vanguard Flooring Weekly Review 11/05</h1>
+  <div class="sub"><b>Week ending 11/05</b> &middot; prepared 2026-11-05 &middot; source: vanguard-flooring repo (live)</div>
 </div>
 <h2>Where the build stands</h2>
 <div class="stats">
-  <div class="stat"><div class="n ac">1</div><div class="l">Shipped since 10/22</div></div>
-  <div class="stat"><div class="n ac">4</div><div class="l">Open PRs</div></div>
+  <div class="stat"><div class="n ac">3</div><div class="l">Shipped since 10/29</div></div>
+  <div class="stat"><div class="n ac">5</div><div class="l">Open PRs</div></div>
   <div class="stat"><div class="n ok">Running</div><div class="l">Automated checks</div></div>
-  <div class="stat"><div class="n warn">79</div><div class="l">Client decisions open</div></div>
+  <div class="stat"><div class="n warn">87</div><div class="l">Client decisions open</div></div>
 </div>
-<p class="muted">A polish week. Automated checks are running and passing again. Open client decisions went from 78 to 79 with one new question (OQ-111). None closed.</p>
+<p class="muted">A heavy shipping week. Three major feature releases landed (People and permissions, Release A, Release B), plus a fix, a handoff note, and three dependency bumps. Automated checks are green. Open client decisions went from 79 to 87 (one closed, nine new).</p>
 <h2>Shipped since last review</h2>
 <ul>
-  <li><b>UI polish release (10/27):</b> every date reads plainly (for example "Oct 21, 2026"), full-size taps and better layouts on phones, plainer wording, a failed save is shown inside the dialog and keeps what was typed, and buttons appear only for people allowed to use them. No data changes and nothing new switched on. <span class="tag">#179</span></li>
+  <li><b>People and permissions (10/29):</b> the screen you asked for on 10/28, so your admins can set each person&#x27;s access one by one. Closes the per-person access question as built. <span class="tag">#181</span></li>
+  <li><b>Release A (11/02):</b> append-only audit log, proposal good-until date and notes, line templates, customer value levels, purchase-order alerts, add person, end users on jobs, and a health check. <span class="tag">#183</span></li>
+  <li><b>Release B (11/03):</b> stricter input checks on actions, Mark sold date checks, a create-bid race fix, end-user typeahead fix, and a max-margin hold as a Settings entry. <span class="tag">#187</span></li>
+  <li><b>Also:</b> change-order file fix, post-Release-A handoff note, and three Actions dependency bumps. <span class="tag">#182</span><span class="tag">#180</span><span class="tag">#184-186</span></li>
 </ul>
 <h2>In review</h2>
 <ul>
-  <li><b>People and permissions screen:</b> the screen you asked for on 10/28, so your admins can see everyone and turn permissions on or off one person at a time. First use: letting the three leaders you named approve credit for new customers. <span class="tag">#181</span></li>
-  <li><b>Full Procent data migration plan:</b> how all of your Procent history moves in, in ten steps. It will bring a short list of migration decisions, including how Procent divisions map. <span class="tag">#178</span></li>
-  <li><b>Detailed job-to-cash finance process</b> for your review, and an internal handoff note. <span class="tag">#169</span><span class="tag">#180</span></li>
+  <li><b>Schedule the two email runs</b> from the repository so the built email jobs can fire on a clock. <span class="tag">#188</span></li>
+  <li><b>PO email from the person who presses Send,</b> and letting coordinators and named people send a purchase order to a vendor. <span class="tag">#189</span><span class="tag">#190</span></li>
+  <li><b>Full Procent data migration plan</b> and the detailed job-to-cash finance process for your review. <span class="tag">#178</span><span class="tag">#169</span></li>
 </ul>
 <h2>Watch-item</h2>
 <div class="flag">
-  <p><b>Shipped features still waiting on you.</b> Proposal approval limits need Nick's starting numbers, and the email features stay off until Dan finishes the Google Workspace setup.</p>
+  <p><b>Shipped features still waiting on you.</b> Sales-level holders and approvers are still owed (limits were given 11/02). Email stays off until Dan finishes the Google Workspace setup. The coordinator and role-dashboard lists from 10/9 are still open.</p>
 </div>
 <h2>Decisions queued</h2>
 <div class="decision">
-  <p class="q">1. Starting approval numbers for proposals <span class="tag">OQ-101 / OQ-96 / OQ-9</span></p>
-  <p class="ctx">Approval limits per salesperson shipped in Wave 1 on 10/18 and are still waiting. They need Nick&#x27;s default margin floor and order-size limit, and which senior salesperson approves for whom.</p>
-  <p class="ask"><b>Ask:</b> Nick sends the default numbers and the approver for each salesperson or office.</p>
+  <p class="q">1. Who holds each sales level and who approves <span class="tag">OQ-119 / OQ-101 / OQ-96</span></p>
+  <p class="ctx">Default approval limits were given 11/02. Still needed: who holds each sales level, the approver for each salesperson, and the Settings entry so the shipped gates can be used.</p>
+  <p class="ask"><b>Ask:</b> Name the holder for each sales level and the approver for each salesperson, then confirm the Settings entry.</p>
 </div>
 <div class="decision">
   <p class="q">2. Turning on email from Vanguard&#x27;s Google Workspace <span class="tag">OQ-98 / OQ-46 / OQ-110</span></p>
-  <p class="ctx">Send to vendor on a PO, the monthly inventory valuation email and email copies of notices are built and switched off until Dan, as Google admin, does the setup steps. Open: who at Vanguard may switch on the monthly valuation email.</p>
+  <p class="ctx">Send to vendor on a PO, the monthly inventory valuation email and email copies of notices are built and switched off until Dan, as Google admin, does the setup steps. Per-person permission for the valuation email now exists; who at Vanguard may switch it on is still open.</p>
   <p class="ask"><b>Ask:</b> Dan schedules the Workspace setup session, and Vanguard picks who switches on the valuation email.</p>
 </div>
 <div class="decision">
-  <p class="q">3. The two lists promised on 10/9 <span class="tag">OQ-41 / OQ-23</span></p>
-  <p class="ctx">Zack&#x27;s coordinator to account-manager pairing and each role&#x27;s starting Dashboard. The pairings import is ready to load the list, and role dashboards are live.</p>
-  <p class="ask"><b>Ask:</b> Send both lists. Also say whether a project coordinator may issue a PO (that switch ships off).</p>
+  <p class="q">3. The two lists promised on 10/9, plus PO senders <span class="tag">OQ-41 / OQ-23</span></p>
+  <p class="ctx">Zack&#x27;s coordinator to account-manager pairing and each role&#x27;s starting Dashboard. The pairings import is ready. Open work also asks whether coordinators and named people may send a purchase order to a vendor.</p>
+  <p class="ask"><b>Ask:</b> Send both lists. Also say whether a project coordinator (and which named people) may issue or send a PO.</p>
 </div>
 <div class="decision">
-  <p class="q">4. Finance direction <span class="tag">OQ-104 / OQ-103 / OQ-106-108</span></p>
-  <p class="ctx">The finance proposal asks Vanguard to confirm the app becomes the finance system of record, and Jay&#x27;s detailed job-to-cash process (#169) is up for review. The controller owes finance roles, accounting policies, and bank and billing formats.</p>
-  <p class="ask"><b>Ask:</b> Dan and Nick review #169, ratify the direction (OQ-104), and set the follow-up date with Liz.</p>
+  <p class="q">4. Finance direction <span class="tag">OQ-104 / OQ-103 / OQ-124</span></p>
+  <p class="ctx">The finance proposal asks Vanguard to confirm the app becomes the finance system of record, and Jay&#x27;s detailed job-to-cash process (#169) is up for review. Liz&#x27;s login address and follow-up date are still owed.</p>
+  <p class="ask"><b>Ask:</b> Dan and Nick review #169, ratify the direction (OQ-104), and set Liz&#x27;s login address and follow-up date.</p>
 </div>
-<p class="muted">Also open: OQ-111 (new: should delivery dates in the past be refused, or just noted as today?), OQ-102 (per-person access, now being built in #181), OQ-109 (email intake follow-ups), OQ-97 (PO responsible parties), and the 7/31 migration cut, OQ-29, OQ-31 to 33, OQ-36 to 39 and OQ-94.</p>
+<p class="muted">Also open: OQ-118 (value level names set; data entry owed), OQ-111 (past dates on future-date fields), OQ-109 (email intake follow-ups), OQ-112, OQ-114, OQ-115, OQ-120 to OQ-122, and the 7/31 migration cut, OQ-29, OQ-31 to 33, OQ-36 to 39 and OQ-94. OQ-102 closed this week (built in #181).</p>
 <h2>Suggested flow to drive the meeting</h2>
 <ol class="agenda">
-  <li>Get Nick's approval numbers and approvers (OQ-101) so the shipped limits can be used.</li>
-  <li>Book Dan's Google Workspace setup and pick who switches on the valuation email (OQ-98, OQ-110).</li>
-  <li>Collect the coordinator and role-dashboard lists (OQ-41, OQ-23) and the coordinator PO answer.</li>
-  <li>Finance and migration: walk #169, ratify direction (OQ-104), set the Liz date (OQ-103); quick answer on past dates (OQ-111).</li>
+  <li>Name sales-level holders and approvers (OQ-119 / OQ-101) so the shipped gates can be used.</li>
+  <li>Book Dan&#x27;s Google Workspace setup and pick who switches on the valuation email (OQ-98, OQ-110).</li>
+  <li>Collect the coordinator and role-dashboard lists (OQ-41, OQ-23) and the coordinator PO answer (ties to #190).</li>
+  <li>Finance: walk #169, ratify direction (OQ-104), set Liz&#x27;s login address and follow-up (OQ-103 / OQ-124).</li>
 </ol>
 <footer>
-  MyOS weekly review for Vanguard Flooring. Read-only. No commercial terms. Prepared 2026-10-29 16:15 ET from HIT-Network/vanguard-flooring via gh on Wade PC.
+  MyOS weekly review for Vanguard Flooring. Read-only. No commercial terms. Prepared 2026-11-05 16:15 ET from HIT-Network/vanguard-flooring via gh on Wade PC.
 </footer>
 </body>
 </html>
