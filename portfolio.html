@@ -128,13 +128,13 @@
     critical: {soft:"var(--crit-soft)", ink:"var(--crit)", stripe:"var(--crit)"}
   };
   const DATA = {
-    updated: "2026-11-12",
+    updated: "2026-11-19",
 projects: [
 {name:"Vanguard Flooring", subtitle:"Commercial flooring operations app", stage:"migration",
-health:"attention", healthNote:"Live 2026-11-12: six merges Mon 11/09 (#188-#193, email runs scheduled, PO email from sender, PO send permission, retry fixes, security refresh); main CI green on tip 1f43449; 4 open PRs (#169, #178, #194, #195); decision debt 89 client / 15 team; OQ-125 and OQ-126 new", clientDecisions:89, teamDecisions:15,
-nextMilestone:"Sales-level holders and approvers (OQ-119 / OQ-101), Dan's Workspace setup (OQ-98), and PO sender and deposit-stage answers (OQ-125 / OQ-126) to turn on shipped features; recorded review on #195 before it merges",
-blocker:"Client: OQ-119/OQ-101, OQ-98/46/110, OQ-125/126, OQ-41/23, OQ-104 still holding shipped features. Team: #188-#193 merged with no recorded review; #195 (large Procent prerequisites) opened 11/12 unreviewed.",
-blockerLevel:"attention", updated:"2026-11-12", sample:false},
+health:"attention", healthNote:"Live 2026-11-19: release #199 self-merged Mon 11/16 with no recorded review (QA sweep #196 plus Procent #195/#197/#198, migrations 0056-0058 applied to dev and prod before merge); main CI green on tip 0694eaef; 3 open PRs (#169 CI red and stale, #178, #194), all 0 reviews; decision debt 90 client / 16 team; OQ-128 and OQ-127 new", clientDecisions:90, teamDecisions:16,
+nextMilestone:"Sales-level holders and approvers (OQ-119 / OQ-101), Dan's Workspace setup (OQ-98), PO sender and deposit-stage answers (OQ-125 / OQ-126), and office-on-bid rule (OQ-128) to turn on shipped features",
+blocker:"Client: OQ-119/OQ-101, OQ-98/46/110, OQ-125/126, OQ-41/23, OQ-128 still holding shipped features. Team: release #199 merged 11/16 with no recorded review, including production schema changes; #194, #178, #169 open unreviewed.",
+blockerLevel:"attention", updated:"2026-11-19", sample:false},
       {name:"Sample Client A", subtitle:"Placeholder - replace when you onboard the next project", stage:"discovery",
        health:"idle", healthNote:"Not started", clientDecisions:0, teamDecisions:0,
        nextMilestone:"Scope workshop", blocker:"", blockerLevel:"", updated:"2026-07-31", sample:true},
