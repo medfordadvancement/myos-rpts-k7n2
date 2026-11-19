@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vanguard Flooring Weekly Review 11/12</title>
+<title>Vanguard Flooring Weekly Review 11/19</title>
 <style>
   :root{
     --bg:#f5f7f9; --surface:#ffffff; --surface-2:#eef1f5; --line:#e2e7ee;
@@ -63,65 +63,63 @@
 <body>
 <div class="top">
   <div class="mark">My<b>OS</b> &nbsp;&middot;&nbsp; Scrum master weekly review</div>
-  <h1>Vanguard Flooring Weekly Review 11/12</h1>
-  <div class="sub"><b>Week ending 11/12</b> &middot; prepared 2026-11-12 &middot; source: vanguard-flooring repo (live)</div>
+  <h1>Vanguard Flooring Weekly Review 11/19</h1>
+  <div class="sub"><b>Week ending 11/19</b> &middot; prepared 2026-11-19 &middot; source: vanguard-flooring repo (live)</div>
 </div>
 <h2>Where the build stands</h2>
 <div class="stats">
-  <div class="stat"><div class="n ac">6</div><div class="l">Merged since 11/05</div></div>
-  <div class="stat"><div class="n ac">4</div><div class="l">Open PRs</div></div>
+  <div class="stat"><div class="n ac">1</div><div class="l">Release merged since 11/12</div></div>
+  <div class="stat"><div class="n ac">3</div><div class="l">Open PRs</div></div>
   <div class="stat"><div class="n ok">Running</div><div class="l">Automated checks</div></div>
-  <div class="stat"><div class="n warn">89</div><div class="l">Client decisions open</div></div>
+  <div class="stat"><div class="n warn">90</div><div class="l">Client decisions open</div></div>
 </div>
-<p class="muted">A focused week. Six changes landed on Monday, mostly around purchase order email. Email is built and still switched off until the Google setup is finished. Automated checks are green. Open client decisions went from 87 to 89 (two new, none closed).</p>
+<p class="muted">One release landed Monday 11/16: a QA and security sweep plus three Procent migration steps. Automated checks are green on main. Nothing has shipped since. Open client decisions went from 89 to 90 (one new, none closed).</p>
 <h2>Shipped since last review</h2>
 <ul>
-  <li><b>Email runs on a schedule (11/09):</b> the two email jobs are now scheduled from the repository, ready to fire once email is switched on. <span class="tag">#188</span></li>
-  <li><b>Purchase order email from the sender (11/09):</b> a PO email leaves from the person who presses Send, and coordinators and named people can send a PO to a vendor. <span class="tag">#189</span><span class="tag">#190</span></li>
-  <li><b>Retry message fixes (11/09):</b> a failed PO message only offers Try again to someone who has the button, and stops offering it past the last try. <span class="tag">#191</span><span class="tag">#192</span></li>
-  <li><b>Security refresh (11/09):</b> a dependency update that picks up a published security fix. <span class="tag">#193</span></li>
+  <li><b>QA and security sweep (11/16):</b> 22 fixes, 2 rated high. <span class="tag">#196</span></li>
+  <li><b>Procent migration groundwork (11/16):</b> deduct lines, old Procent bid number, customer active flag and migrated markers. <span class="tag">#195</span></li>
+  <li><b>AR only stage (11/16):</b> a stage between accounting review and closed; Procent cost stays out of money totals; vendors can be marked as installers. <span class="tag">#197</span></li>
+  <li><b>Offices and divisions (11/16):</b> on bids and jobs, with a settings page, filters and export columns. Optional for now. <span class="tag">#198</span></li>
 </ul>
 <h2>In review</h2>
 <ul>
-  <li><b>Procent migration prerequisites, lane 1:</b> deduct lines, Procent bid number, customer active flag and migrated markers. Opened today; nothing is applied to any database. <span class="tag">#195</span></li>
-  <li><b>Spec and sign-off reconciliation</b> so the written specs match what is built. Opened today. <span class="tag">#194</span></li>
+  <li><b>Spec and sign-off reconciliation</b> so written specs match what is built. <span class="tag">#194</span></li>
   <li><b>Full Procent data migration plan</b> and the detailed job-to-cash finance process for your review. <span class="tag">#178</span><span class="tag">#169</span></li>
 </ul>
 <h2>Watch-item</h2>
 <div class="flag">
-  <p><b>Shipped features still waiting on you.</b> Sales-level holders and approvers are still owed (limits were given 11/02). Email stays off until Dan finishes the Google Workspace setup. Two new purchase order questions need Nick. The coordinator and role-dashboard lists from 10/9 are still open.</p>
+  <p><b>Shipped features still waiting on you.</b> Sales-level holders and approvers are still owed. Email stays off until Dan finishes the Google Workspace setup. The purchase order sender and deposit-stage questions need Nick. A new question asks whether a bid must name its office.</p>
 </div>
 <h2>Decisions queued</h2>
 <div class="decision">
   <p class="q">1. Who holds each sales level and who approves <span class="tag">OQ-119 / OQ-101 / OQ-96</span></p>
-  <p class="ctx">Limits were given 11/02. Still needed: who holds each sales level, the approver for each salesperson, and the Settings entry so the shipped gates can be used.</p>
-  <p class="ask"><b>Ask:</b> Name the holder for each sales level and the approver for each salesperson, then confirm the Settings entry.</p>
+  <p class="ctx">Limits were given 11/02. Still needed: holder for each sales level, approver for each salesperson, and the Settings entry so the shipped gates can be used.</p>
+  <p class="ask"><b>Ask:</b> Name the holders and approvers, then confirm the Settings entry.</p>
 </div>
 <div class="decision">
   <p class="q">2. Turning on email from Vanguard&#x27;s Google Workspace <span class="tag">OQ-98 / OQ-46 / OQ-110</span></p>
-  <p class="ctx">Send to vendor on a PO, the monthly inventory valuation email and email copies of notices are built and switched off. The 11/02 setup call did not finish; the admin&#x27;s own steps and the sending mailbox name are owed.</p>
+  <p class="ctx">Send to vendor on a PO, the monthly inventory valuation email and email copies of notices are built and switched off. The admin&#x27;s own steps and the sending mailbox name are still owed.</p>
   <p class="ask"><b>Ask:</b> Dan finishes the Workspace steps under his own login, Nick names the sending mailbox, and Vanguard picks who switches on the valuation email.</p>
 </div>
 <div class="decision">
   <p class="q">3. Purchase order sender, deposit-stage orders, and the two lists <span class="tag">OQ-125 / OQ-126 / OQ-41 / OQ-23</span></p>
-  <p class="ctx">A PO email is built to leave from whoever presses Send; we need Nick to confirm that is what &quot;the coordinator who generates the PO&quot; means. Also open: may an order at the deposit stage be emailed to the vendor. Zack&#x27;s coordinator pairing list and each role&#x27;s Dashboard list are still owed from 10/9.</p>
-  <p class="ask"><b>Ask:</b> Confirm the sender rule (OQ-125), say yes or no on deposit-stage orders (OQ-126), and send both lists.</p>
+  <p class="ctx">A PO email leaves from whoever presses Send; we need Nick to confirm that is what &quot;the coordinator who generates the PO&quot; means, and whether a deposit-stage order may be emailed to the vendor. Zack&#x27;s coordinator pairing list and each role&#x27;s Dashboard list are still owed from 10/9.</p>
+  <p class="ask"><b>Ask:</b> Confirm the sender rule, say yes or no on deposit-stage orders, and send both lists.</p>
 </div>
 <div class="decision">
-  <p class="q">4. Finance direction <span class="tag">OQ-104 / OQ-103 / OQ-124</span></p>
-  <p class="ctx">The finance proposal asks Vanguard to confirm the app becomes the finance system of record, and the detailed job-to-cash process (#169) is up for review. Liz&#x27;s login address and follow-up date are still owed.</p>
-  <p class="ask"><b>Ask:</b> Dan and Nick review #169, ratify the direction (OQ-104), and set Liz&#x27;s login address and follow-up date.</p>
+  <p class="q">4. Must a bid name its office before it becomes a proposal <span class="tag">OQ-128</span></p>
+  <p class="ctx">Offices and divisions are now on bids and jobs, kept optional because the office codes and job number format are not set and requiring it would block every existing bid.</p>
+  <p class="ask"><b>Ask:</b> Say whether an office is required on a new bid and at what point (new bid, print or sale), and whether a job may exist without one.</p>
 </div>
-<p class="muted">Also open: OQ-118 (value level names set; data entry owed), OQ-111 (past dates on future-date fields), OQ-109 (email intake follow-ups), OQ-112, OQ-114, OQ-115, OQ-120 to OQ-122, and the 7/31 migration cut, OQ-29, OQ-31 to 33, OQ-36 to 39 and OQ-94.</p>
+<p class="muted">Also open: finance direction (OQ-104 / OQ-103 / OQ-124, review #169), OQ-118, OQ-111, OQ-109, OQ-112, OQ-114, OQ-115, OQ-120 to OQ-122, and the 7/31 migration cut, OQ-29, OQ-31 to 33, OQ-36 to 39 and OQ-94.</p>
 <h2>Suggested flow to drive the meeting</h2>
 <ol class="agenda">
-  <li>Name sales-level holders and approvers (OQ-119 / OQ-101) so the shipped gates can be used.</li>
+  <li>Name sales-level holders and approvers (OQ-119 / OQ-101).</li>
   <li>Book the rest of Dan&#x27;s Google Workspace setup and name the sending mailbox (OQ-98, OQ-46, OQ-110).</li>
-  <li>Confirm the PO sender rule and deposit-stage orders (OQ-125, OQ-126); collect the coordinator and role-dashboard lists (OQ-41, OQ-23).</li>
-  <li>Finance: walk #169, ratify direction (OQ-104), set Liz&#x27;s login address and follow-up (OQ-103 / OQ-124).</li>
+  <li>Confirm the PO sender rule and deposit-stage orders (OQ-125, OQ-126); collect the 10/9 lists (OQ-41, OQ-23).</li>
+  <li>Decide whether a bid must name its office (OQ-128); walk #169 and the finance direction (OQ-104).</li>
 </ol>
 <footer>
-  MyOS weekly review for Vanguard Flooring. Read-only. No commercial terms. Prepared 2026-11-12 16:15 ET from HIT-Network/vanguard-flooring via gh on Wade PC.
+  MyOS weekly review for Vanguard Flooring. Read-only. No commercial terms. Prepared 2026-11-19 from HIT-Network/vanguard-flooring via gh on Wade PC.
 </footer>
-</body>
-</html>
+</body></html>
